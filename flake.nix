@@ -1,10 +1,22 @@
 {
   description = "A very basic flake";
 
+  outputs = inputs:
+  inputs.flake-parts.lib.mkFlake{inherit inputs;}{
+  systems = ["x86_64-linux"];
+    imports = [./hosts];
+    perSystem = {
+      config,
+      pkgs,
+      ...
+    }:{
+      #deshells go here
+      formatter = pkgs.alejandra;
+    };
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-
-    impermanence.url = "github:nix-community/impermanence";
     niri-flake = {
        url="github:Sodiboo/niri-flake";
      };
@@ -22,20 +34,5 @@ flake-parts = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
-
-  outputs = { self, nixpkgs, impermanence,nvf ,... }@inputs: {
-
-nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-  specialArgs = {inherit inputs;};
-
-  modules = [
-    ./configuration.nix
-    nvf.nixosModules.default 
-    inputs.impermanence.nixosModules.impermanence
-    inputs.niri-flake.nixosModules.niri
-    ];  
-};
-
   };
 }
