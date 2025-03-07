@@ -17,6 +17,8 @@ in {
       ./tzeentch
       ../system/core
       ../system/core/boot.nix
+
+      ../system/programs
     ];
   };
 };
