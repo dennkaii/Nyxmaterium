@@ -8,37 +8,9 @@
 
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot = { 
-	initrd = {
-		systemd.enable = true;
-		availableKernelModules = ["uas"];
-	};
-
-  loader.efi.efiSysMountPoint = "/boot";
-  supportedFilesystems.ntfs = true;
-};
-
-boot.zfs.requestEncryptionCredentials = true;
-
-boot.loader.grub = {
-    enable = true;
-    efiSupport = true;
-    devices = ["nodev"];
-  };
-
 networking.hostId = "2bf9a036";
 
 nixpkgs.config.allowUnfree = true;
-
-users.users.dennkaii=  {
-isNormalUser = true;
-initialPassword = "123456";
-extraGroups = ["wheel" "networkmanager"];
-};
-users.users.root = {
-  initialPassword = "123456";
-};
 
 # programs.nvf.enable = true;
 nix.settings.experimental-features = [
@@ -90,33 +62,6 @@ programs.git = {
   };
 };
 
-# impermanace related
-
-fileSystems."/" = lib.mkForce { device = "tmpfs"; fsType = "tmpfs"; neededForBoot = true; options = [
-    "size=1G"
-    "defaults"
-    "mode=755"
-  ];
-};
-
-# environment.persistence = {
-#   "/persist" = {
-#     hideMounts = true;
-#     directories = [
-#       "/etc/nixos"
-#       "/var/lib/nixos"
-#       "/home/dennkaii/projects/Nyxmaterium"
-#       "/home"
-#       "/var/log"
-#       "/var/lib/bluetooth"
-#       {directory = "/var/lib/colord"; user = "colord"; mode ="u=rwx,g=rx,o=";}
-#     ];
-#     files = [
-#       {file = "/var/keys/secret_file"; parentDirectory = {mode = "u=rwx,g=,o=";}; }
-#     ];
-#   };
-# };
-# #
   programs.niri.enable = true;
   networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.

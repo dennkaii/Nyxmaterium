@@ -7,15 +7,6 @@
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
-
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];
-  boot.initrd.kernelModules = ["amdgpu""asus-wmi""asus-nb-wmi" ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.blacklistedKernelModules = ["ucsi_acpi"];
-  boot.extraModulePackages = [ ];
-  boot.kernelPackages = pkgs.linuxPackages_xanmod;
-  boot.zfs.devNodes = "/dev/disk/by-partuuid";
-
   fileSystems."/" =
     { device = "zroot/root";
       fsType = "zfs";
