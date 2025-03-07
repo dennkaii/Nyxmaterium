@@ -8,20 +8,7 @@
   inherit (lib) mkOption types;
 in {
    options.users = {
-    main = mkOption {
-      type = with types; str;
-      description = ''
-        Main user
-      '';
-    };
-    host = mkOption {
-      type = with types; str;
-      description = ''
-        Host name
-      '';
-    };
-
-    groups = mkOption {
+    egroups = mkOption {
       type = with types; listOf str;
       default = [];
       description = ''
@@ -41,9 +28,9 @@ in {
       isNormalUser = true;
       group = "users";
       initialPassword = "123456";
-      extraGroups = ["wheel" "networkmanager"]++cfg.groups;
+      extraGroups = ["wheel" "networkmanager"]++cfg.egroups;
       };
-    mutableUsers = false;
     };
+    users.mutableUsers = true;
   };
 }
