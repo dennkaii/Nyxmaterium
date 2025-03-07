@@ -4,7 +4,7 @@
   ...
 }:
 {
-  boot = {
+config. boot = {
 
   kernelModules = [ "kvm-amd" ];
   blacklistedKernelModules = ["ucsi_acpi"];
@@ -13,10 +13,9 @@
   supportedFilesystems.ntfs = true;
 
   initrd = {
-    availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];
+    availableKernelModules = ["uas" "nvme" "xhci_pci" "thunderbolt" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];
     kernelModules = ["amdgpu""asus-wmi""asus-nb-wmi" ];
     systemd.enable = true;
-		availableKernelModules = ["uas"];
   };
 
   loader = {
@@ -36,6 +35,5 @@
     devNodes = "/dev/disk/by-partuuid";
     requestEncryptionCredentials = true;
   };
-    };
-  
+ };  
 }

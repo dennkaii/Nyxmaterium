@@ -1,5 +1,5 @@
 {pkgs,lib,...}:let
-inherit(lib) mkDefault
+inherit(lib) mkDefault;
 in {
   imports = [
     ./boot.nix
