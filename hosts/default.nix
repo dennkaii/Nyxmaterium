@@ -3,7 +3,7 @@
   inputs,
   ...
 }:
-let
+{flake.nixosConfigurations = let
  specialArgs = {inherit inputs self;};
 inherit (inputs.nixpkgs.lib) nixosSystem;
 in {
@@ -13,4 +13,5 @@ in {
       ./tzeentch
     ];
   };
+};
 }
