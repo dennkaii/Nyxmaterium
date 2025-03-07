@@ -4,7 +4,10 @@
   outputs = inputs:
   inputs.flake-parts.lib.mkFlake{inherit inputs;}{
   systems = ["x86_64-linux"];
-    imports = [./hosts];
+    imports = [
+    ./hosts
+    ./system
+    ];
     perSystem = {
       config,
       pkgs,
