@@ -3,14 +3,20 @@
   inputs,
   ...
 }:
-{flake.nixosConfigurations = let
- specialArgs = {inherit inputs self;};
-inherit (inputs.nixpkgs.lib) nixosSystem;
+{
+flake.nixosConfigurations = let
+   specialArgs = {inherit inputs self;};
+    inherit (inputs.nixpkgs.lib) nixosSystem;
+    mod = "${self}/system";
+    inherit (import mod) laptop;
 in {
   tzeentch = nixosSystem {
     inherit specialArgs;
-    modules = [
+    modules =
+     [
       ./tzeentch
+      ../system/core
+      ../system/core/boot.nix
     ];
   };
 };

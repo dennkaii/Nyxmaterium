@@ -4,7 +4,7 @@
   ...
 }:
 {
-config. boot = {
+boot = {
 
   kernelModules = [ "kvm-amd" ];
   blacklistedKernelModules = ["ucsi_acpi"];
