@@ -40,7 +40,7 @@ users.users.root = {
   initialPassword = "123456";
 };
 
-programs.nvf.enable = true;
+# programs.nvf.enable = true;
 nix.settings.experimental-features = [
   "nix-command"
   "flakes"
