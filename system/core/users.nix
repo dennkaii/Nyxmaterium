@@ -31,6 +31,6 @@ in {
       extraGroups = ["wheel" "networkmanager"]++cfg.egroups;
       };
     };
-    users.mutableUsers = true;
+    users.mutableUsers = false;
   };
 }
