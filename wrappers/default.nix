@@ -1,13 +1,20 @@
 {
   lib,
   inputs,
+  config,
   pkgs,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
+  config.users.epackages = [
     (inputs.wrapper-manager.lib.build {
       inherit pkgs;
-      modules = [];
+      modules = [
+        {
+          wrappers.zen = {
+            basePackage = inputs.zen-browser.packages.${pkgs.system}.default;
+          };
+        }
+      ];
     })
   ];
 }
