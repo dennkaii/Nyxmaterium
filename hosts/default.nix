@@ -16,6 +16,7 @@
         config.laptop
         ++ [
           ./tzeentch
+          ../wrappers/default.nix
         ];
     };
   };
