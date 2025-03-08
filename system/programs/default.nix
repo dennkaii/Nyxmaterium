@@ -5,5 +5,6 @@
 }:{
   imports = [
     ./nvf.nix
+    ./direnv.nix
   ];
 }
