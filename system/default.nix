@@ -17,6 +17,8 @@ in {
       ./core
       ./core/boot.nix
       ./programs
+      ./hardware/nvidia.nix
+      ./hardware/amd.nix
     ];
   };
 }
