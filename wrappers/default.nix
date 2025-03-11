@@ -10,6 +10,7 @@
       inherit pkgs;
       modules = [
         ./dunst/default.nix
+        ./nushell/default.nix
         {
           wrappers.zen = {
             basePackage = inputs.zen-browser.packages.${pkgs.system}.default;
