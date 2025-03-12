@@ -15,17 +15,17 @@
 
   hardware.nvidia = {
     prime = {
-      amdgpuBusId = "PCI:100:00:0";
-      nvidiaBusId = "PCI:100:0:1";
-      # offload = {
-      #   enable = true;
-      #   enableOffloadCmd = true;
-      # };
-      sync.enable = true;
+      amdgpuBusId = "PCI:65:0:0";
+      nvidiaBusId = "PCI:64:0:0";
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+      #   sync.enable = true;
     };
     modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
+    powerManagement.enable = true;
+    powerManagement.finegrained = true;
     open = false;
     nvidiaSettings = true;
   };
