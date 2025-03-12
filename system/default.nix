@@ -9,7 +9,7 @@ in {
   options.laptop = mkOption {
     type = with types; listOf path;
     default = [];
-    description = ''     
+    description = ''       
       Paths that will be added to laptop'';
   };
   config = {
@@ -20,6 +20,7 @@ in {
       ./hardware/nvidia.nix
       ./hardware/amd.nix
       ./services/greetd.nix
+      ./programs/home-manager.nix
     ];
   };
 }
