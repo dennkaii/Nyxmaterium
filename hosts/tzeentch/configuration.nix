@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   networking.hostId = "2bf9a036";
 
   nixpkgs.config.allowUnfree = true;
