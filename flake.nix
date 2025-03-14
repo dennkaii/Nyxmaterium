@@ -31,7 +31,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    niri-flake = {
+    niri = {
       url = "github:Sodiboo/niri-flake";
     };
     nvf.url = "github:notashelf/nvf";

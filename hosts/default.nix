@@ -7,6 +7,7 @@
   flake.nixosConfigurations = let
     specialArgs = {inherit inputs self;};
     inherit (inputs.nixpkgs.lib) nixosSystem;
+    homeImports = import "${self}/home/profiles";
     mod = "${self}/system";
     inherit (import mod) laptop;
   in {
@@ -17,6 +18,12 @@
         ++ [
           ./tzeentch
           ../wrappers/default.nix
+          {
+            home-manager = {
+              users.dennkaii.imports = homeImports."dennkaii@tzeentch";
+              extraSpecialArgs = specialArgs;
+            };
+          }
         ];
     };
   };
