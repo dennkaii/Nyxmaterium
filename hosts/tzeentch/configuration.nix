@@ -49,6 +49,8 @@
     kitty
     ghostty
     firefox
+    tidal-hifi
+    vesktop
   ];
 
   programs.gnupg.agent = {
