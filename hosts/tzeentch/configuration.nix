@@ -46,10 +46,16 @@
 
   environment.systemPackages = with pkgs; [
     fuzzel
+    warp-terminal
     kitty
+    arduino-ide
+    zoxide
     ghostty
+    google-chrome
     firefox
     tidal-hifi
+    netflix
+    lazygit
     vesktop
   ];
 
