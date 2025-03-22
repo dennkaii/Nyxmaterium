@@ -67,6 +67,10 @@
       outputs = {
         "eDP-1" = {
           scale = 2;
+          mode = {
+            height = 3840;
+            width = 2160;
+          };
           variable-refresh-rate = true;
         };
         "HDMI-A-1" = {
@@ -122,6 +126,12 @@
           # dim unfocused windows
           matches = [{is-focused = false;}];
           opacity = 0.95;
+        }
+        {
+          matches = [
+            {app-id = "processing-app-Base";}
+          ];
+          open-maximized = true;
         }
       ];
 
