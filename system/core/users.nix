@@ -38,7 +38,7 @@ in {
         packages =
           []
           ++ cfg.epackages;
-        extraGroups = ["wheel" "networkmanager"] ++ cfg.egroups;
+        extraGroups = ["wheel" "dialout" "networkmanager"] ++ cfg.egroups;
       };
     };
     users.mutableUsers = false;
