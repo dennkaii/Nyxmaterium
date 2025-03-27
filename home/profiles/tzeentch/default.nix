@@ -1,7 +1,7 @@
 {
   imports = [
-    ../../programs/niri.nix
-    #services
-    ../../services/quickshell
+    ../../services
+    ../../programs
+    ../../terminal
   ];
 }

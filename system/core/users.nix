@@ -32,6 +32,7 @@ in {
       };
       dennkaii = {
         uid = 1000;
+        shell = pkgs.nushell;
         isNormalUser = true;
         group = "users";
         initialPassword = "123456";

@@ -10,7 +10,6 @@
       inherit pkgs;
       modules = [
         ./dunst/default.nix
-        ./nushell/default.nix
         ./lutris/default.nix
         {
           wrappers.zen = {

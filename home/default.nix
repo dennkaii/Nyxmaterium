@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./programs/niri.nix
   ];
   home = {
     username = "dennkaii";

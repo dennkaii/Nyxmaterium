@@ -27,35 +27,17 @@
 
   environment.sessionVariables = {NIXOS_OZONE_WL = "1";};
 
-  programs.git = {
-    enable = true;
-    config = {
-      init = {
-        defaultBranch = "master";
-      };
-      user = {
-        name = "dennkaii";
-        email = "githubdennkaii.q3i49@simplelogin.com";
-      };
-    };
-  };
-
   programs.niri.enable = true;
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   environment.systemPackages = with pkgs; [
     fuzzel
-    warp-terminal
     kitty
     arduino-ide
-    zoxide
     ghostty
-    google-chrome
-    firefox
     tidal-hifi
     netflix
-    lazygit
     vesktop
   ];
 

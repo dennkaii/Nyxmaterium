@@ -1,11 +1,13 @@
 {pkgs, ...}: {
+  imports = [
+    ./niri.nix
+  ];
   home.packages = with pkgs; [
     # screenshot
     grim
     slurp
 
     # utils
-    self.packages.${pkgs.system}.wl-ocr
     wl-clipboard
     # wl-screenrec
     wlr-randr
