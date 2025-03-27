@@ -23,7 +23,10 @@
   programs = {
     atuin.enable = true;
     broot.enable = true;
-    carapace.enable = true;
+    carapace = {
+      enable = true;
+      package = pkgs.carapace;
+    };
     eza.enable = true;
   };
   programs.atuin.enableNushellIntegration = true;
