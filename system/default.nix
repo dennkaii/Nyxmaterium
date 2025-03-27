@@ -9,13 +9,14 @@ in {
   options.laptop = mkOption {
     type = with types; listOf path;
     default = [];
-    description = ''         
+    description = ''       
       Paths that will be added to laptop'';
   };
   config = {
     laptop = [
       ./core
       ./core/boot.nix
+      ./nix/default.nix
       ./programs
       ./hardware/nvidia.nix
       ./hardware/amd.nix
