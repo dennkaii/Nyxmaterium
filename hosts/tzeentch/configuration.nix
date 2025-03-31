@@ -25,7 +25,12 @@
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
   ];
 
-  environment.sessionVariables = {NIXOS_OZONE_WL = "1";};
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    XDG_SESSION_TYPE = "wayland";
+  };
 
   programs.niri.enable = true;
   networking.hostName = "nixos"; # Define your hostname.
