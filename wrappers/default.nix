@@ -11,6 +11,7 @@
       modules = [
         ./dunst/default.nix
         ./lutris/default.nix
+        ./nyxt/default.nix
         {
           wrappers.zen = {
             basePackage = inputs.zen-browser.packages.${pkgs.system}.default;
