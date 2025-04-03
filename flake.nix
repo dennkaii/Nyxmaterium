@@ -34,6 +34,7 @@
     niri = {
       url = "github:Sodiboo/niri-flake";
     };
+    wallpkgs.url = "github:dennkaii/wallpkgs";
     nvf.url = "github:notashelf/nvf";
     systems.url = "github:nix-systems/default-linux";
     flake-parts = {
