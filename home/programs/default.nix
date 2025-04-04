@@ -1,3 +1,8 @@
 {...}: {
-  imports = [./wayland/niri.nix];
+  imports = [
+    ./gtk.nix
+    ./qt.nix
+
+    ./wayland/niri.nix
+  ];
 }
