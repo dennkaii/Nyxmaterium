@@ -9,7 +9,7 @@ in {
   options.laptop = mkOption {
     type = with types; listOf path;
     default = [];
-    description = ''     
+    description = ''       
       Paths that will be added to laptop'';
   };
   config = {

@@ -3,9 +3,9 @@
   inputs,
   ...
 }: let
-  wallpkgs = inputs.wallpkgs.packages.${pkgs.system}.misc;
+  wall = inputs.wallpkgs.wallpapers.misc.unorganized-12.path;
 in {
-  services = {
+  systemd.services = {
     swww = {
       enable = true;
       wantedBy = ["niri.service"];
@@ -23,7 +23,7 @@ in {
       wants = ["swww.service"];
       after = ["swww.service"];
       serviceConfig = {
-        ExecStart = ''${pkgs.swww}/bin/swww img "${wallpkgs}/share/wallpapers/misc/unorganized-12.jpg" --transition-type random'';
+        ExecStart = ''${pkgs.swww}/bin/swww img "${wall}" --transition-type random'';
         Restart = "on-failure";
         Type = "oneshot";
       };
