@@ -42,6 +42,7 @@
 
   environment.systemPackages = with pkgs; [
     fuzzel
+    bitwarden-cli
     kitty
     arduino-ide
     ghostty
