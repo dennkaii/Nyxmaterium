@@ -6,10 +6,11 @@
 }: {
   imports = [
     inputs.nvf.nixosModules.default
+    #    ./nvf/settings.nix
   ];
   programs.nvf = {
     enable = true;
-    settings = {
+settings = {
       vim = {
         lsp = {
           enable = true;
@@ -63,7 +64,6 @@
           # whichKey.enable = true;
           cheatsheet.enable = true;
         };
-      };
-    };
+ };     
   };
-}
+};}
