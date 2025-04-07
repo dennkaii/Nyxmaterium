@@ -11,6 +11,7 @@
       modules = [
         ./dunst/default.nix
         ./lutris/default.nix
+        ./devenv/default.nix
         ./nyxt/default.nix
         {
           wrappers.zen = {
