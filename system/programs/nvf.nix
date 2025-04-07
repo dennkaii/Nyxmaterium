@@ -1,55 +1,13 @@
-{
-  inputs,
-  pkgs,
-  config,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     inputs.nvf.nixosModules.default
-    #    ./nvf/settings.nix
+    ./nvf/plugins/default.nix
+    ./nvf/settings.nix
   ];
   programs.nvf = {
     enable = true;
-settings = {
+    settings = {
       vim = {
-        lsp = {
-          enable = true;
-          formatOnSave = true;
-        };
-        languages = {
-          enableLSP = true;
-          enableFormat = true;
-          enableTreesitter = true;
-          nix.enable = true;
-          rust = {
-            enable = true;
-            # crates.enable = true;
-          };
-          html.enable = true;
-          python.enable = true;
-          markdown.enable = true;
-          bash.enable = true;
-          lua.enable = true;
-        };
-        package = pkgs.neovim-unwrapped;
-        vimAlias = false;
-        viAlias = false;
-
-        autoIndent = true;
-        autocomplete.nvim-cmp.enable = true;
-        autopairs.nvim-autopairs.enable = true;
-        enableEditorconfig = true;
-        preventJunkFiles = true;
-        enableLuaLoader = true;
-        useSystemClipboard = true;
-        spellcheck = {
-          enable = true;
-          languages = ["en"];
-        };
-        hideSearchHighlight = true;
-        searchCase = "smart";
-        splitRight = true;
-
         theme = {
           enable = true;
           name = "oxocarbon";
@@ -64,6 +22,7 @@ settings = {
           # whichKey.enable = true;
           cheatsheet.enable = true;
         };
- };     
+      };
+    };
   };
-};}
+}
