@@ -5,7 +5,6 @@
 }: {
   home.packages = [pkgs.dconf];
   dconf.enable = true; #wiki says gtk may not work without it
-  qt.platformTheme.name = "gtk";
   dconf.settings = {
     # disable dconf first use warning
     "ca/desrt/dconf-editor" = {
