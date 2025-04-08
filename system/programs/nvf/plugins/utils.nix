@@ -1,5 +1,6 @@
 {...}: {
   programs.nvf.settings.vim = {
+    # binds.whichKey.enable = true;
     notify.nvim-notify.enable = true;
     ui = {
       illuminate.enable = true;
@@ -16,7 +17,6 @@
 
         navbuddy = {
           enable = true;
-          setupOpts.useDefaultMappings = false;
         };
       };
 
@@ -39,7 +39,7 @@
       nvim-web-devicons.enable = true;
     };
 
-    maps.normal."<leader>ln" = {
+    maps.normal."<leader>al" = {
       desc = "Open Navbuddy";
       action = "<cmd>Navbuddy<cr>";
     };

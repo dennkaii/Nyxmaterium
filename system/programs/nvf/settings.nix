@@ -13,11 +13,10 @@
     useSystemClipboard = true;
     spellcheck = {
       enable = true;
-      languages = ["en" "esp"];
+      languages = ["en"];
     };
     hideSearchHighlight = true;
     searchCase = "smart";
     splitRight = true;
-    disableArrows = true;
   };
 }

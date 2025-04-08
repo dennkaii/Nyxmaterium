@@ -14,8 +14,14 @@
             "zc" = "close_node";
             "zC" = "close_all_nodes";
             "v" = "open_vsplit";
+            "h" = "open_hsplit";
           };
         };
+      };
+    };
+    maps = {
+      normal = {
+        "<leader>e".action = ":Neotree float %:p:h toggle reveal<CR>";
       };
     };
   };

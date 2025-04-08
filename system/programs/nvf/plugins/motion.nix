@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
+{pkgs, ...}:
 # let
 #   # inherit (lib.generators) mkLuaInline;
 #in

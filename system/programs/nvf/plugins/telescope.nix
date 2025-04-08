@@ -58,19 +58,17 @@ in {
     lazy.plugins.telescope = {
       after = ''
         local telescope = require("telescope")
-        telescope.load_extension("zf-native")
-        telescope.load_extension("zoxide")
       '';
 
-      keys = [
-        {
-          mode = "n";
-          key = "<leader>ji";
-          desc = "Zoxide list";
-          lua = true;
-          action = "function() require('telescope').extensions.zoxide.list() end";
-        }
-      ];
+      # keys = [
+      #   {
+      #     mode = "n";
+      #     key = "<leader>ji";
+      #     desc = "Zoxide list";
+      #     lua = true;
+      #     action = "function() require('telescope').extensions.zoxide.list() end";
+      #   }
+      # ];
     };
 
     binds.whichKey.register = {

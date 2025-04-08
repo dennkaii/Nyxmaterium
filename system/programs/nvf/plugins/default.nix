@@ -9,6 +9,8 @@
     ./filetree.nix
     ./languages.nix
     ./telescope.nix
+    ./toggleterm.nix
+    ./harpoon.nix
     ./statusline.nix
   ];
 }
