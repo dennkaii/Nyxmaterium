@@ -43,19 +43,20 @@
 
       spawn-at-startup = let
         xwayland = [
-          "sh"
-          "${pkgs.writeShellScript "xwayland_on_niri" ''
-            ${pkgs.toybox}/bin/setsid ${pkgs.xwayland-satellite}/bin/xwayland-satellite
-            ${pkgs.toybox}/bin/sleep 4
-            ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd "DISPLAY"
-          ''}"
+          # "sh"
+          # "${pkgs.writeShellScript "xwayland_on_niri" ''
+          #   ${pkgs.toybox}/bin/setsid ${pkgs.xwayland-satellite}/bin/xwayland-satellite
+          #   ${pkgs.toybox}/bin/sleep 4
+          #   ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd "DISPLAY"
+          # ''}"
         ];
       in [
         {
           command = ["${pkgs.wluma}/bin/wluma"];
         }
-        # {command = ["waybar"];}
-        {command = xwayland;}
+        {command = ["swww-daemon"];}
+        # {command = xwayland;}
+        {command = ["${pkgs.xwayland-satellite}/bin/xwayland-satellite"];}
         {command = ["fcitx5"];}
         # {command = ["walker" "--gapplication-service"];}
         # {command = ["rofi" "-show" "drun"];}

@@ -60,7 +60,7 @@ $env.PROMPT_INDICATOR_VI_INSERT = {|| ": " }
 $env.PROMPT_INDICATOR_VI_NORMAL = {|| "> " }
 $env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
 $env.EDITOR = "nvim"
-$env.DISPLAY = ":0"
+# $env.DISPLAY = ":0"
 $env.GTK_IM_MODULE = "fcitx"
 $env.QT_IM_MODULE = "fcitx"
 $env.XMODIFIERS = "@im=fcitx"
