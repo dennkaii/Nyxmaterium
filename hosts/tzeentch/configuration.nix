@@ -3,24 +3,20 @@
   inputs,
   ...
 }: {
+  #must be enabled for zfs
   networking.hostId = "2bf9a036";
 
   nixpkgs.config.allowUnfree = true;
 
-  # programs.nvf.enable = true;
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
 
-  services.asusd.enable = true;
-  services.supergfxd.enable = true;
-  services.tlp.enable = true;
-
   nix.settings.substituters = [
     "https://nix-community.cachix.org"
-    "https://nixpkgs-python.cachix.org"
-    "https://devenv.cachix.org"
+    "https://nixpkgs-python.cachix.org" # for devevn with python
+    "https://devenv.cachix.org" #for devenv to work properly
   ];
 
   nix.settings.trusted-public-keys = [
@@ -37,7 +33,7 @@
   };
 
   programs.niri.enable = true;
-  networking.hostName = "nixos"; # Define your hostname.
+
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   environment.systemPackages = with pkgs; [
