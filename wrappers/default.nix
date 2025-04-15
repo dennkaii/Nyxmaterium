@@ -17,6 +17,10 @@
           wrappers.zen = {
             basePackage = inputs.zen-browser.packages.${pkgs.system}.default;
           };
+
+          wrappers.jj = {
+            basePackage = inputs.jj.packages.${pkgs.system}.default;
+          };
         }
       ];
     })
