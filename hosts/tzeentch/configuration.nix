@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  #must be enabled for zfs
+  #must be set for ZFS
   networking.hostId = "2bf9a036";
 
   nixpkgs.config.allowUnfree = true;
@@ -41,7 +41,6 @@
     bitwarden-cli
     kitty
     arduino-ide
-    ghostty
     google-chrome
     tidal-hifi
     netflix
