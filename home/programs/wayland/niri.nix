@@ -55,6 +55,7 @@
           command = ["${pkgs.wluma}/bin/wluma"];
         }
         {command = ["swww-daemon"];}
+        # {command = ["gauntlet" "--minimized"];}
         # {command = xwayland;}
         {command = ["${pkgs.xwayland-satellite}/bin/xwayland-satellite"];}
         {command = ["fcitx5"];}
@@ -145,11 +146,13 @@
         screenarea = "grimblast save area - | satty --filename - ";
         screenactive = "grimblast save active - | satty --filename - ";
       in {
-        "${mod}+Return".action = spawn "${pkgs.ghostty}/bin/ghostty";
+        "${mod}+Return".action = spawn "${inputs.ghostty.packages.${pkgs.system}.default}/bin/ghostty";
         "${mod}+Space".action = spawn "${pkgs.rofi-wayland-unwrapped}/bin/rofi" "-show" "drun";
+        #wait for fix of:https://github.com/project-gauntlet/gauntlet/issues/45
+        # "${mod}+Space".action = sh "gauntlet 'open'";
         "${mod}+S".action = sh ''${screenarea}'';
         "${ms}+S".action = sh ''${screenactive}'';
-        "${ms}+A".action = sh "ghostty '--title=clipse' -e 'clipse'";
+        "${ms}+A".action = sh "${inputs.ghostty.packages.${pkgs.system}.default}/bin/ghostty '--title=clipse' -e 'clipse'";
         "${mod}+f".action = toggle-window-floating;
         "${mc}+t".action = switch-focus-between-floating-and-tiling;
 
