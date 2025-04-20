@@ -19,7 +19,7 @@ in {
     };
 
     session = {
-      command = "run/current-system/sw/bin/niri-session";
+      command = "${pkgs.niri}/bin/niri-session";
       user = "dennkaii";
     };
   in {
