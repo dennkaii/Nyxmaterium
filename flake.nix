@@ -61,6 +61,10 @@
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
+    gauntlet = {
+      url = "github:project-gauntlet/gauntlet";
+      inputs.systems.follows = "nixpkgs";
+    };
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
