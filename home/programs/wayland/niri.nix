@@ -130,9 +130,9 @@
         }
         {
           matches = [
-            {app-id = "processing-app-Base";}
+            {title = "clipse";}
           ];
-          open-maximized = true;
+          open-floating = true;
         }
       ];
 
@@ -149,20 +149,27 @@
         "${mod}+Space".action = spawn "${pkgs.rofi-wayland-unwrapped}/bin/rofi" "-show" "drun";
         "${mod}+S".action = sh ''${screenarea}'';
         "${ms}+S".action = sh ''${screenactive}'';
-        "${ms}+A".action = sh ''ghostty -e 'clipse' '';
+        "${ms}+A".action = sh "ghostty '--title=clipse' -e 'clipse'";
+        "${mod}+f".action = toggle-window-floating;
+        "${mc}+t".action = switch-focus-between-floating-and-tiling;
 
         "${ms}+Q".action = close-window;
         "${mc}+H".action = move-column-left;
         "${mc}+J".action = move-window-down-or-to-workspace-down;
         "${mc}+K".action = move-window-up-or-to-workspace-up;
         "${mc}+L".action = move-column-right;
+        "${ms}+C".action = center-column;
+        "${ms}+R".action = reset-window-height;
+        "${ms}+W".action = toggle-column-tabbed-display;
 
-        "${ms}+E".action = quit;
+        "${ms}+J".action = focus-workspace-down;
+        "${ms}+K".action = focus-workspace-up;
+        "${mod}+m".action = maximize-column;
 
-        "${ms}+F".action = maximize-column;
+        "${ms}+F".action = fullscreen-window;
         "${mod}+H".action = focus-column-left;
-        "${mod}+J".action = focus-window-or-workspace-down;
-        "${mod}+K".action = focus-window-or-workspace-up;
+        "${mod}+J".action = focus-window-down;
+        "${mod}+K".action = focus-window-up;
         "${mod}+L".action = focus-column-right;
         "Alt+Plus".action = set-column-width "+10%";
         "Alt+Equal".action = set-column-width "+10%";
@@ -170,9 +177,10 @@
         "Mod+Plus".action = set-window-height "+10%";
         "Mod+Equal".action = set-window-height "+10%";
         "Mod+Minus".action = set-window-height "-10%";
+        "${mod}+E".action = expand-column-to-available-width;
 
-        "${ms}+comma".action = consume-or-expel-window-left;
-        "${ms}+period".action = consume-or-expel-window-right;
+        "${mod}+bracketleft".action = consume-window-into-column;
+        "${mod}+bracketright".action = expel-window-from-column;
 
         #workspace movement
         "${mod}+1".action = focus-workspace 1;
