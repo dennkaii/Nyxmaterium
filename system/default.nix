@@ -9,7 +9,7 @@ in {
   options.laptop = mkOption {
     type = with types; listOf path;
     default = [];
-    description = ''         
+    description = ''       
       Paths that will be added to laptop'';
   };
   config = {
@@ -25,6 +25,7 @@ in {
       ./services/komga.nix
       ./programs/home-manager.nix
       ./programs/games.nix
+      ./programs/gauntlet.nix
     ];
   };
 }
