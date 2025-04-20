@@ -6,10 +6,12 @@
   programs.ghostty = {
     enable = true;
     package = inputs.ghostty.packages.${pkgs.system}.default;
+    #not working
+    # themes = import ./theme.nix;
     settings = {
       confirm-close-surface = false;
       window-decoration = false;
-      background-opacity = 0.8;
+      # background-opacity = 0.8;
       keybind = [
         "ctrl+t=new_tab"
         "ctrl+w=close_tab"
@@ -54,6 +56,7 @@
         "ctrl+alt+left=unbind"
         "ctrl+alt+right=unbind"
       ];
+      # theme = "oxocarbon-dark.itermcolors";
     };
   };
 }
