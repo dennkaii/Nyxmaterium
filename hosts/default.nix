@@ -23,7 +23,7 @@
             home-manager = {
               users.dennkaii.imports = homeImports."dennkaii@tzeentch";
               extraSpecialArgs = specialArgs;
-              backupFileExtension = ".hm-backup";
+              backupFileExtension = "backup";
             };
           }
         ];
