@@ -4,12 +4,32 @@
   lib,
   inputs,
   ...
-}: {
+}: let
+  keyboardlight = pkgs.writeShellScriptBin "keyboardlight" ''
+                            device='asus::kbd_backlight'
+
+    #retrives current status
+
+    current=$(${pkgs.brightnessctl}/bin/brightnessctl --device=$device | awk -F': ' '/Current brightness/ {print $2}' | awk '{print $1}')
+
+    if [ "$current" = 1 ]; then
+    	${pkgs.brightnessctl}/bin/brightnessctl --device=$device set 2
+    elif [ "$current" = 2 ]; then
+    	${pkgs.brightnessctl}/bin/brightnessctl --device=$device set 3
+    elif [ "$current" = 3 ]; then
+    	${pkgs.brightnessctl}/bin/brightnessctl --device=$device set 0
+    elif [ "$current" = 0 ]; then
+    ${pkgs.brightnessctl}/bin/brightnessctl --device=$device set 1
+
+    fi
+  '';
+in {
   imports = [
     inputs.niri.homeModules.niri
   ];
   home.packages = with pkgs; [
     wl-clipboard
+    keyboardlight
     clipse
     swww
     satty
@@ -142,7 +162,6 @@
         ms = "${mod}+Shift";
         mc = "${mod}+Ctrl";
         sh = spawn "sh" "-c";
-
         screenarea = "grimblast save area - | satty --filename - ";
         screenactive = "grimblast save active - | satty --filename - ";
       in {
@@ -165,6 +184,7 @@
         "${ms}+R".action = reset-window-height;
         "${ms}+W".action = toggle-column-tabbed-display;
 
+        "XF86KbdLightOnOff".action = sh ''keyboardlight'';
         "${ms}+J".action = focus-workspace-down;
         "${ms}+K".action = focus-workspace-up;
         "${mod}+m".action = maximize-column;
