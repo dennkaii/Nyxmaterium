@@ -28,6 +28,13 @@
     open = true;
     nvidiaSettings = true;
   };
+  #https://discourse.nixos.org/t/black-screen-after-suspend-hibernate-with-nvidia/54341/6
+  systemd.services."systemd-suspend" = {
+    serviceConfig = {
+      Environment = ''"SYSTEMD_SLEEP_FREEZE_USER_SESSIONS=false"'';
+    };
+  };
+
   # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
   #   version = "565.77";
   #   sha256_64bit = "sha256-CnqnQsRrzzTXZpgkAtF7PbH9s7wbiTRNcM0SPByzFHw=";
