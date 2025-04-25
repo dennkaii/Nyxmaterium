@@ -34,6 +34,10 @@
     niri = {
       url = "github:Sodiboo/niri-flake";
     };
+    asus-dialpad-driver = {
+      url = "github:asus-linux-drivers/asus-dialpad-driver";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     wallpkgs.url = "github:dennkaii/wallpkgs";
     nvf.url = "github:notashelf/nvf";
     systems.url = "github:nix-systems/default-linux";
