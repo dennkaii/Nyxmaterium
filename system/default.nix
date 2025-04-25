@@ -9,7 +9,7 @@ in {
   options.laptop = mkOption {
     type = with types; listOf path;
     default = [];
-    description = ''       
+    description = ''         
       Paths that will be added to laptop'';
   };
   config = {
@@ -17,11 +17,13 @@ in {
       ./core
       ./core/boot.nix
       ./nix/default.nix
-      ./programs
+      ./programs/default.nix
       ./hardware/nvidia.nix
       ./hardware/amd.nix
+      ./hardware/dialpad.nix
       ./services/greetd.nix
       #      ./services/swww.nix
+      ./programs/thunderbird.nix
       ./services/komga.nix
       ./programs/home-manager.nix
       ./programs/games.nix
