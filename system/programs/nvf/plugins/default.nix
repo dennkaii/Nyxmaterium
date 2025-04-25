@@ -2,6 +2,7 @@
   imports = [
     ./dashboard.nix
     ./lsp.nix
+    ./neocord.nix
     ./git.nix
     ./utils.nix
     ./motion.nix
