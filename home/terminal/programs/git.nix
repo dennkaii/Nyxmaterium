@@ -3,7 +3,7 @@
   programs.git = {
     enable = true;
     userName = "dennkaii";
-    userEmail = "githubdennkaii.q3i49@simplelogin.com";
+    userEmail = "70287696+dennkaii@users.noreply.github.com";
   };
 
   programs.lazygit = {
