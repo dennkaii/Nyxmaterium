@@ -21,6 +21,12 @@
           wrappers.jj = {
             basePackage = inputs.jj.packages.${pkgs.system}.default;
           };
+          wrappers.deezer-enhanced = {
+            basePackage = inputs.deezer-enhanced.packages.${pkgs.system}.default;
+            flags = [
+              "--ozone-platform-hint=wayland"
+            ];
+          };
         }
       ];
     })
