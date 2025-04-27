@@ -75,6 +75,7 @@ in {
           command = ["${pkgs.wluma}/bin/wluma"];
         }
         {command = ["swww-daemon"];}
+        {command = ["${inputs.sherlock.packages.${pkgs.system}.default}/bin/sherlock --daemonize"];}
         # {command = ["gauntlet" "--minimized"];}
         # {command = xwayland;}
         {command = ["${pkgs.xwayland-satellite}/bin/xwayland-satellite"];}
@@ -166,7 +167,9 @@ in {
         screenactive = "grimblast save active - | satty --filename - ";
       in {
         "${mod}+Return".action = spawn "${inputs.ghostty.packages.${pkgs.system}.default}/bin/ghostty";
-        "${mod}+Space".action = spawn "${pkgs.rofi-wayland-unwrapped}/bin/rofi" "-show" "drun";
+        # "${mod}+Space".action = spawn "${pkgs.rofi-wayland-unwrapped}/bin/rofi" "-show" "drun";
+        "${mod}+Space".action = spawn "${inputs.sherlock.packages.${pkgs.system}.default}/bin/sherlock";
+
         #wait for fix of:https://github.com/project-gauntlet/gauntlet/issues/45
         # "${mod}+Space".action = sh "gauntlet 'open'";
         "${mod}+S".action = sh ''${screenarea}'';
