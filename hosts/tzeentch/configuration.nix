@@ -38,6 +38,7 @@
 
   environment.systemPackages = with pkgs; [
     fuzzel
+    quickemu
     bitwarden-cli
     kitty
     arduino-ide
