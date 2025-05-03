@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./nvf.nix
+    ./tmux.nix
     ./direnv.nix
     ./xdg.nix
   ];
