@@ -1,3 +1,6 @@
 {...}: {
-  imports = [./ghostty/ghostty.nix];
+  imports = [
+    ./ghostty/ghostty.nix
+    ./foot/default.nix
+  ];
 }
