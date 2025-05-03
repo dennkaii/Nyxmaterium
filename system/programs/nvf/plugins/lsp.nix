@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   programs.nvf.settings.vim = {
     lsp = {
       formatOnSave = true;
@@ -9,6 +9,12 @@
       lsplines.enable = true;
       lspconfig.enable = true;
       nvim-docs-view.enable = true;
+      lspconfig.sources.qmlls = ''
+        lspconfig.qmlls.setup {
+          capabilities = capabilities,
+          cmd = {"${pkgs.kdePackages.qtdeclarative}/bin/qmlls", "-E"}
+        }
+      '';
     };
   };
 }
