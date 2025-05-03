@@ -38,6 +38,9 @@
       url = "github:asus-linux-drivers/asus-dialpad-driver";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    fabric = {
+      url = "github:Fabric-Development/fabric";
+    };
     deezer-enhanced = {
       url = "github:dennkaii/deezer-enhanced";
       inputs.nixpkgs.follows = "nixpkgs";
