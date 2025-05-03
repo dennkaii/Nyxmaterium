@@ -1,4 +1,16 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  minimal-dot = pkgs.tmuxPlugins.mkTmuxPlugin {
+    pluginName = "tmux-dotbar";
+    version = "0.1.0";
+    src = pkgs.fetchFromGitHub {
+      owner = "vaaleyard";
+      repo = "tmux-dotbar";
+      rev = "master";
+      sha256 = "sha256-n9k18pJnd5mnp9a7VsMBmEHDwo3j06K6/G6p7/DTyIY=";
+    };
+    rtpFilePath = "dotbar.tmux";
+  };
+in {
   programs.tmux = {
     enable = true;
     keyMode = "vi";
@@ -9,8 +21,8 @@
     plugins = with pkgs.tmuxPlugins; [
       pain-control
       tmux-floax
-      dracula
       sensible
+      minimal-dot
     ];
     extraConfigBeforePlugins = ''
       # set -as terminal-features ",alacritty*:RGB,foot*:RGB,xterm-kitty*:RGB"
@@ -28,11 +40,9 @@
             set -g @floax-bind '-n M-p'
             set -g @floax-bind-menu 'P'
 
-      #theme
-        set -g @dracula-show-left-icon "#S | #W"
-        set -g @dracula-transparent-powerline-bg true
-        set -g @dracula-show-battery true
-        set -g @dracula-show-powerline true
+            set -g @tmux-dotbar-position top
+            set -g @tmux-dotbar-right true
+            set -g @tmux-dotbar-right true
 
 
     '';
