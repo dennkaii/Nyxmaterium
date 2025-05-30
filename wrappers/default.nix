@@ -12,7 +12,7 @@
         ./dunst/default.nix
         ./lutris/default.nix
         ./devenv/default.nix
-        ./nyxt/default.nix
+        # ./nyxt/default.nix
         ./blender/default.nix
         {
           wrappers.zen = {

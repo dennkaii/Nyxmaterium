@@ -6,12 +6,10 @@
   ...
 }: let
   keyboardlight = pkgs.writeShellScriptBin "keyboardlight" ''
-                            device='asus::kbd_backlight'
-
-    #retrives current status
-
+    device='asus::kbd_backlight'
+    #get current brighness
     current=$(${pkgs.brightnessctl}/bin/brightnessctl --device=$device | awk -F': ' '/Current brightness/ {print $2}' | awk '{print $1}')
-
+    #cycle keyboard light level 0 to 3
     if [ "$current" = 1 ]; then
     	${pkgs.brightnessctl}/bin/brightnessctl --device=$device set 2
     elif [ "$current" = 2 ]; then
@@ -23,6 +21,9 @@
 
     fi
   '';
+  kanshictl = "${pkgs.kanshi}/bin/kanshictl";
+  xwaylandSatellite = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
+  xwaylandSatelliteDisplay = ":1";
 in {
   imports = [
     inputs.niri.homeModules.niri
@@ -53,43 +54,35 @@ in {
 
         touchpad = {
           click-method = "clickfinger";
+          tap = true;
           dwt = true;
-          natural-scroll = false;
+          natural-scroll = true;
           scroll-method = "two-finger";
         };
 
         workspace-auto-back-and-forth = true;
       };
 
-      spawn-at-startup = let
-        xwayland = [
-          # "sh"
-          # "${pkgs.writeShellScript "xwayland_on_niri" ''
-          #   ${pkgs.toybox}/bin/setsid ${pkgs.xwayland-satellite}/bin/xwayland-satellite
-          #   ${pkgs.toybox}/bin/sleep 4
-          #   ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd "DISPLAY"
-          # ''}"
-        ];
-      in [
+      spawn-at-startup = [
         {
           command = ["${pkgs.wluma}/bin/wluma"];
         }
         {command = ["swww-daemon"];}
-        {command = ["${inputs.sherlock.packages.${pkgs.system}.default}/bin/sherlock --daemonize"];}
+        # {command = ["${inputs.sherlock.packages.${pkgs.system}.default}/bin/sherlock --daemonize"];}
         # {command = ["gauntlet" "--minimized"];}
-        # {command = xwayland;}
-        {command = ["${pkgs.xwayland-satellite}/bin/xwayland-satellite"];}
+        {command = [xwaylandSatellite xwaylandSatelliteDisplay];}
         {command = ["fcitx5"];}
         # {command = ["walker" "--gapplication-service"];}
         # {command = ["rofi" "-show" "drun"];}
         {command = ["clipse" "-listen"];}
+        {command = [kanshictl "reload"];}
       ];
 
       prefer-no-csd = true;
 
       outputs = {
         "eDP-1" = {
-          scale = 2;
+          scale = 1.5;
           mode = {
             height = 3840;
             width = 2160;
@@ -130,7 +123,17 @@ in {
         QT_QPA_PLATFOMR = "wayland";
         MOZ_ENABLE_WAYLAND = "1";
         KDE_SESSION_VERISON = "5";
-        DISPLAY = ":0";
+        XDG_SESSION_DESKTOP = "niri";
+        DISPLAY = xwaylandSatelliteDisplay;
+        CLUTTER_BACKEND = "wayland";
+        GDK_BACKEND = "wayland,x11,*";
+        QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+        QT_QPA_PLATFORM = "wayland;xcb";
+        NIXOS_OZONE_WL = "1";
+        GDK_SCALE = "1.0";
+        GDK_DPI_SCALE = "1.0";
+        XCURSOR_SIZE = "32";
+        TERM = "foot";
       };
 
       window-rules = [
@@ -167,16 +170,25 @@ in {
         screenactive = "grimblast save active - | satty --filename - ";
       in {
         "${mod}+Return".action = spawn "${inputs.ghostty.packages.${pkgs.system}.default}/bin/ghostty";
-        # "${mod}+Space".action = spawn "${pkgs.rofi-wayland-unwrapped}/bin/rofi" "-show" "drun";
-        "${mod}+Space".action = spawn "${inputs.sherlock.packages.${pkgs.system}.default}/bin/sherlock";
+        "${mod}+Space".action = spawn "${pkgs.rofi-wayland-unwrapped}/bin/rofi" "-show" "drun";
+        # "${mod}+Space".action = spawn "${inputs.sherlock.packages.${pkgs.system}.default}/bin/sherlock";
 
-        #wait for fix of:https://github.com/project-gauntlet/gauntlet/issues/45
-        # "${mod}+Space".action = sh "gauntlet 'open'";
         "${mod}+S".action = sh ''${screenarea}'';
         "${ms}+S".action = sh ''${screenactive}'';
         "${ms}+A".action = sh "${inputs.ghostty.packages.${pkgs.system}.default}/bin/ghostty '--title=clipse' -e 'clipse'";
         "${mod}+f".action = toggle-window-floating;
         "${mc}+t".action = switch-focus-between-floating-and-tiling;
+
+        #utilities
+        "XF86AudioMute".action = spawn ["wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"];
+        "XF86AudioLowerVolume".action = spawn ["wpctl" "set-volume" "-l" "1.4" "@DEFAULT_AUDIO_SINK@" "2%-"];
+        "XF86AudioRaiseVolume".action = spawn ["wpctl" "set-volume" "-l" "1.4" "@DEFAULT_AUDIO_SINK@" "2%+"];
+        "XF86AudioPrev".action = spawn ["playerctl" "previous"];
+        "XF86AudioPlay".action = spawn ["playerctl" "play-pause"];
+        "xf86audioNext".action = spawn ["playerctl" "next"];
+        "XF86MonBrightnessDown".action = spawn ["brightnessctl" "set" "2%-"];
+        "XF86MonBrightnessUp".action = spawn ["brightnessctl" "set" "+2%"];
+        "XF86KbdLightOnOff".action = sh ''keyboardlight'';
 
         "${ms}+Q".action = close-window;
         "${mc}+H".action = move-column-left;
@@ -185,9 +197,7 @@ in {
         "${mc}+L".action = move-column-right;
         "${ms}+C".action = center-column;
         "${ms}+R".action = reset-window-height;
-        "${ms}+W".action = toggle-column-tabbed-display;
 
-        "XF86KbdLightOnOff".action = sh ''keyboardlight'';
         "${ms}+J".action = focus-workspace-down;
         "${ms}+K".action = focus-workspace-up;
         "${mod}+m".action = maximize-column;
@@ -198,15 +208,14 @@ in {
         "${mod}+K".action = focus-window-up;
         "${mod}+L".action = focus-column-right;
         "Alt+Plus".action = set-column-width "+10%";
-        "Alt+Equal".action = set-column-width "+10%";
-        "Alt+Minus".action = set-column-width "-10%";
-        "Mod+Plus".action = set-window-height "+10%";
-        "Mod+Equal".action = set-window-height "+10%";
-        "Mod+Minus".action = set-window-height "-10%";
-        "${mod}+E".action = expand-column-to-available-width;
+        "Alt+Equal".action = set-column-width "-10%";
 
-        "${mod}+bracketleft".action = consume-window-into-column;
-        "${mod}+bracketright".action = expel-window-from-column;
+        #group windows
+        "${mod}+BracketLeft".action = consume-or-expel-window-left;
+        "${mod}+BracketRight".action = consume-or-expel-window-right;
+        #toogle tabbed
+        "${ms}+t".action = toggle-column-tabbed-display;
+        "${ms}+Tab".action = move-column-to-monitor-next;
 
         #workspace movement
         "${mod}+1".action = focus-workspace 1;
@@ -218,16 +227,10 @@ in {
         "${mod}+7".action = focus-workspace 7;
         "${mod}+8".action = focus-workspace 8;
         "${mod}+9".action = focus-workspace 9;
-
-        "${ms}+1".action = move-column-to-workspace 1;
-        "${ms}+2".action = move-column-to-workspace 2;
-        "${ms}+3".action = move-column-to-workspace 3;
-        "${ms}+4".action = move-column-to-workspace 4;
-        "${ms}+5".action = move-column-to-workspace 5;
-        "${ms}+6".action = move-column-to-workspace 6;
-        "${ms}+7".action = move-column-to-workspace 7;
-        "${ms}+8".action = move-column-to-workspace 8;
-        "${ms}+9".action = move-column-to-workspace 9;
+      };
+      switch-events = with config.lib.niri.actions; {
+        lid-close.action = spawn ["kanshictl" "switch" "peacehavenDockedClosed"];
+        lid-open.action = spawn ["kanshictl" "switch" "peacehavenDockedOpen"];
       };
     };
   };

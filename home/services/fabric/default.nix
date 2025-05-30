@@ -4,6 +4,7 @@
   ...
 }: {
   home.packages = with pkgs; [
-    inputs.fabric.packages.${pkgs.system}.default
+    inputs.fabric.packages.${pkgs.system}.run-widget
+    playerctl
   ];
 }

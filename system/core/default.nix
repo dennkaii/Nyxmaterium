@@ -1,12 +1,17 @@
-{pkgs,lib,...}:let
-inherit(lib) mkDefault;
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  inherit (lib) mkDefault;
 in {
   imports = [
     ./boot.nix
     ./users.nix
+    ./fonts.nix
   ];
 
-   i18n = {
+  i18n = {
     defaultLocale = "en_US.UTF-8";
     # saves space
     supportedLocales = [

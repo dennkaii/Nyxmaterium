@@ -16,6 +16,10 @@
         #deshells go here
         devShells = {
           default = pkgs.mkShell {
+            nativeBuildInputs = [
+              inputs.nixpkgs.legacyPackages.x86_64-linux.python3
+              inputs.fabric.packages.x86_64-linux.run-widget
+            ];
             packages = [
               pkgs.alejandra
               pkgs.git
@@ -26,11 +30,15 @@
           };
         };
         formatter = pkgs.alejandra;
+        packages.x86_64-linux = {
+          run-widget = inputs.fabric.packages.x86_64-linux.run-widget; # Expose run-widget directly
+        };
       };
     };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+
     niri = {
       url = "github:Sodiboo/niri-flake";
     };
@@ -83,7 +91,7 @@
       inputs.systems.follows = "nixpkgs";
     };
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
