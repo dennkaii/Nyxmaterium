@@ -28,6 +28,9 @@
               "--ozone-platform-hint=wayland"
             ];
           };
+          wrappers.quteBrowser = {
+            basePackage = pkgs.qutebrowser;
+          };
         }
       ];
     })
