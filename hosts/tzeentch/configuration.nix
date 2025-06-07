@@ -43,7 +43,6 @@
     kitty
     arduino-ide
     google-chrome
-    tidal-hifi
     netflix
     vesktop
   ];
