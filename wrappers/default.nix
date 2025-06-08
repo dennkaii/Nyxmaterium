@@ -31,6 +31,9 @@
           wrappers.quteBrowser = {
             basePackage = pkgs.qutebrowser;
           };
+          wrappers.tidal-luna = {
+            basePackage = inputs.tidal-luna.packages.${pkgs.system}.default;
+          };
         }
       ];
     })

@@ -68,6 +68,9 @@
       url = "github:jj-vcs/jj";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    tidal-luna = {
+      url = "github:Inrixia/TidaLuna";
+    };
     sherlock = {
       url = "github:Skxxtz/sherlock";
     };

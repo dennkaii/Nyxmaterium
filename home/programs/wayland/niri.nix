@@ -82,7 +82,7 @@ in {
 
       outputs = {
         "eDP-1" = {
-          scale = 1.5;
+          scale = 2.2;
           mode = {
             height = 3840;
             width = 2160;
@@ -133,7 +133,7 @@ in {
         GDK_SCALE = "1.0";
         GDK_DPI_SCALE = "1.0";
         XCURSOR_SIZE = "32";
-        TERM = "foot";
+        TERM = "ghostty";
       };
 
       window-rules = [
@@ -207,8 +207,8 @@ in {
         "${mod}+J".action = focus-window-down;
         "${mod}+K".action = focus-window-up;
         "${mod}+L".action = focus-column-right;
-        "Alt+Plus".action = set-column-width "+10%";
-        "Alt+Equal".action = set-column-width "-10%";
+        "Alt+Minus".action = set-column-width "-10%";
+        "Alt+Equal".action = set-column-width "+10%";
 
         #group windows
         "${mod}+BracketLeft".action = consume-or-expel-window-left;
