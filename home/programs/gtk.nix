@@ -26,10 +26,8 @@
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
-    theme.package = pkgs.gnome-themes-extra;
+    theme.package = pkgs.fluent-gtk-theme;
     theme.name = "Adwaita-dark";
-
-    #Fonts are already manager by stylix
 
     iconTheme = {
       name = "Papirus-Dark";

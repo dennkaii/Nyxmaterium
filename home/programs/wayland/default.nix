@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./niri.nix
+    ./waybar.nix
   ];
   home.packages = with pkgs; [
     # screenshot
