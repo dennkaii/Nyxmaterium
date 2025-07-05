@@ -12,7 +12,7 @@
     preventJunkFiles = true;
     comments.comment-nvim.enable = true;
     enableLuaLoader = true;
-    useSystemClipboard = true;
+    # useSystemClipboard = true;
     spellcheck = {
       enable = true;
       languages = ["en"];

@@ -2,12 +2,21 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  stableOverlay = final: prev: {
+    stable = import inputs.stable-nix {
+      system = "x86_64-linux";
+      config.allowUnfree = true;
+    };
+  };
+in {
   #must be set for ZFS
   networking.hostId = "2bf9a036";
 
-  nixpkgs.config.allowUnfree = true;
-
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [stableOverlay];
+  };
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -45,6 +54,7 @@
     google-chrome
     netflix
     vesktop
+    inputs.stable-nix.legacyPackages.${system}.davinci-resolve
   ];
 
   programs.gnupg.agent = {

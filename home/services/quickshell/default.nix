@@ -2,6 +2,23 @@
   pkgs,
   inputs,
   ...
-}: {
-  home.packages = [inputs.quickshell.packages.${pkgs.system}.default];
+}: let
+  programs = with pkgs; [
+    ddcutil
+    brightnessctl
+    app2unit
+    cava
+    networkmanager
+    lm_sensors
+    fish
+    aubio
+    pipewire
+    glibc
+    libgcc
+    grim
+    swappy
+    libqalculate
+  ];
+in {
+  home.packages = [inputs.quickshell.packages.${pkgs.system}.default] ++ programs;
 }

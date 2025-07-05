@@ -32,6 +32,9 @@ in {
     wl-clipboard
     keyboardlight
     clipse
+    grim
+    slurp
+    waybar
     swww
     satty
     grimblast
@@ -154,6 +157,9 @@ in {
           opacity = 0.95;
         }
         {
+          matches = [{app-id = "waybar";}];
+        }
+        {
           matches = [
             {title = "clipse";}
           ];
@@ -166,7 +172,7 @@ in {
         ms = "${mod}+Shift";
         mc = "${mod}+Ctrl";
         sh = spawn "sh" "-c";
-        screenarea = "grimblast save area - | satty --filename - ";
+        screenarea = ''grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png'';
         screenactive = "grimblast save active - | satty --filename - ";
       in {
         "${mod}+Return".action = spawn "${inputs.ghostty.packages.${pkgs.system}.default}/bin/ghostty";

@@ -6,7 +6,7 @@
 }: {
   wrappers.dunst = {
     basePackage = pkgs.dunst;
-    flags = [
+    prependFlags = [
       "-config"
       ./dunstrc
     ];

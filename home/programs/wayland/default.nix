@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./niri.nix
-    ./waybar.nix
   ];
   home.packages = with pkgs; [
     # screenshot
@@ -10,7 +9,7 @@
 
     # utils
     wl-clipboard
-    # wl-screenrec
+    wl-screenrec
     wlr-randr
   ];
 

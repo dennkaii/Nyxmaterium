@@ -38,6 +38,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    stable-nix.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     niri = {
       url = "github:Sodiboo/niri-flake";
@@ -89,10 +90,10 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
-    gauntlet = {
-      url = "github:project-gauntlet/gauntlet";
-      inputs.systems.follows = "nixpkgs";
-    };
+    # gauntlet = {
+    #   url = "github:project-gauntlet/gauntlet";
+    #   inputs.systems.follows = "nixpkgs";
+    # };
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
