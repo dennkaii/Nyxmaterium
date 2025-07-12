@@ -1,6 +1,6 @@
 {...}: {
   imports = [
     ./quickshell
-    ./fabric/default.nix
+    # ./fabric/default.nix
   ];
 }

@@ -4,6 +4,6 @@
     ./qt.nix
 
     ./wayland/niri.nix
-    ./sherlock/default.nix
+    # ./sherlock/default.nix
   ];
 }

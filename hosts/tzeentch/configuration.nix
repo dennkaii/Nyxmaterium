@@ -3,6 +3,7 @@
   inputs,
   ...
 }: let
+  #Must move to a separete file inside system/nix/overlay
   stableOverlay = final: prev: {
     stable = import inputs.stable-nix {
       system = "x86_64-linux";
@@ -54,7 +55,13 @@ in {
     google-chrome
     netflix
     vesktop
-    inputs.stable-nix.legacyPackages.${system}.davinci-resolve
+    stremio
+    dwarfs
+    fuse3
+    fuse-overlayfs
+    bubblewrap
+    wine-staging
+    # stable.davinci-resolve
   ];
 
   programs.gnupg.agent = {

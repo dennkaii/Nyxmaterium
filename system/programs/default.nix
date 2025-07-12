@@ -8,5 +8,6 @@
     ./tmux.nix
     ./direnv.nix
     ./xdg.nix
+    ./games/default.nix
   ];
 }

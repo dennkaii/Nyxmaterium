@@ -18,7 +18,6 @@
           default = pkgs.mkShell {
             nativeBuildInputs = [
               inputs.nixpkgs.legacyPackages.x86_64-linux.python3
-              inputs.fabric.packages.x86_64-linux.run-widget
             ];
             packages = [
               pkgs.alejandra
@@ -30,9 +29,6 @@
           };
         };
         formatter = pkgs.alejandra;
-        packages.x86_64-linux = {
-          run-widget = inputs.fabric.packages.x86_64-linux.run-widget; # Expose run-widget directly
-        };
       };
     };
 
@@ -47,14 +43,10 @@
       url = "github:asus-linux-drivers/asus-dialpad-driver";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    fabric = {
-      url = "github:Fabric-Development/fabric";
-    };
     deezer-enhanced = {
       url = "github:dennkaii/deezer-enhanced";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    wallpkgs.url = "github:dennkaii/wallpkgs";
     nvf.url = "github:notashelf/nvf";
     systems.url = "github:nix-systems/default-linux";
     flake-parts = {
@@ -65,15 +57,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    jj = {
-      url = "github:jj-vcs/jj";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     tidal-luna = {
       url = "github:Inrixia/TidaLuna";
-    };
-    sherlock = {
-      url = "github:Skxxtz/sherlock";
     };
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
@@ -90,10 +75,10 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
-    # gauntlet = {
-    #   url = "github:project-gauntlet/gauntlet";
-    #   inputs.systems.follows = "nixpkgs";
-    # };
+    gauntlet = {
+      url = "github:dennkaii/gauntlet";
+      inputs.systems.follows = "nixpkgs";
+    };
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
