@@ -21,12 +21,12 @@
         # wrappers.jj = {
         # basePackage = inputs.jj.packages.${pkgs.system}.default;
         # };
-        wrappers.deezer-enhanced = {
-          basePackage = inputs.deezer-enhanced.packages.${pkgs.system}.default;
-          prependFlags = [
-            "--ozone-platform-hint=wayland"
-          ];
-        };
+        # wrappers.deezer-enhanced = {
+        #   basePackage = inputs.deezer-enhanced.packages.${pkgs.system}.default;
+        #   prependFlags = [
+        #     "--ozone-platform-hint=wayland"
+        #   ];
+        # };
         # wrappers.quteBrowser = {
         #   basePackage = pkgs.qutebrowser;
         # };

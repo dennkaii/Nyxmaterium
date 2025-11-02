@@ -3,7 +3,7 @@
     ./gtk.nix
     ./qt.nix
 
-    ./wayland/niri.nix
-    # ./sherlock/default.nix
+    ./wayland/default.nix
+    ./sherlock/default.nix
   ];
 }

@@ -55,7 +55,6 @@ in {
     google-chrome
     netflix
     vesktop
-    stremio
     dwarfs
     fuse3
     fuse-overlayfs

@@ -9,7 +9,7 @@
     # normal fonts
     noto-fonts-cjk-sans
     noto-fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     roboto
     monaspace
     # maple-mono.NF

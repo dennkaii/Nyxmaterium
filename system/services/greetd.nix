@@ -10,7 +10,7 @@ in {
     defaultSession = {
       user = "greeter";
       command = concatStringsSep " " [
-        (getExe pkgs.greetd.tuigreet)
+        (getExe pkgs.tuigreet)
         "--time"
         "--remember"
         "--remember-user-session"
@@ -27,7 +27,7 @@ in {
     settings = {
       terminal.vt = 1;
       default_session = defaultSession;
-      initial_session = session;
+      # initial_session = session;
     };
   };
 }

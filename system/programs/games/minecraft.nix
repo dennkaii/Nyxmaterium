@@ -13,7 +13,7 @@
     # Latest
     temurin-jre-bin
     zulu
-    graalvm-ce
+    graalvmPackages.graalvm-ce
   ];
 
   additionalPrograms = with pkgs; [

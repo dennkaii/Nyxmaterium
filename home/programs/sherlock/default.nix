@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  imports = [inputs.sherlock.homeManagerModules.default];
+  # imports = [inputs.sherlock.homeManagerModules.default];
 
   programs.sherlock = {
     enable = true;

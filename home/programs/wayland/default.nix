@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./niri.nix
+    # ./mango/default.nix
   ];
   home.packages = with pkgs; [
     # screenshot

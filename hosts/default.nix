@@ -18,7 +18,6 @@
         ++ [
           ./tzeentch
           ../wrappers/default.nix
-          inputs.lix-module.nixosModules.default
           {
             home-manager = {
               users.dennkaii.imports = homeImports."dennkaii@tzeentch";

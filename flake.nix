@@ -39,12 +39,13 @@
     niri = {
       url = "github:Sodiboo/niri-flake";
     };
-    asus-dialpad-driver = {
-      url = "github:asus-linux-drivers/asus-dialpad-driver";
+    mango = {
+      url = "github:DreamMaoMao/mango";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    deezer-enhanced = {
-      url = "github:dennkaii/deezer-enhanced";
+
+    asus-dialpad-driver = {
+      url = "github:asus-linux-drivers/asus-dialpad-driver";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvf.url = "github:notashelf/nvf";
@@ -75,16 +76,12 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
-    gauntlet = {
-      url = "github:dennkaii/gauntlet";
-      inputs.systems.follows = "nixpkgs";
-    };
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    sherlock = {
+      url = "github:Skxxtz/sherlock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

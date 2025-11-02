@@ -10,8 +10,8 @@
     sshfs
 
     # utils
-    du-dust
     duf
+    dust
     fd
     file
     jaq
