@@ -10,7 +10,7 @@
     envFile.source = ./nushell/env.nu;
 
     shellAliases = {
-      sysupdate = "sudo nixos-rebuild switch --flake ~/.nixConfig/#Aethyr";
+      # sysupdate = "sudo nixos-rebuild switch --flake ~/.nixConfig/#Aethyr";
 
       "gs" = "git status";
       "gb" = "git branch";

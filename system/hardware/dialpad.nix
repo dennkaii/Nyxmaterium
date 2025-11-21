@@ -1,7 +1,7 @@
 {inputs, ...}: {
   imports = [inputs.asus-dialpad-driver.nixosModules.default];
   services.asus-dialpad-driver = {
-    enable = true;
+    enable = false;
     layout = "proartp16";
     wayland = true;
     waylandDisplay = "wayland-1";

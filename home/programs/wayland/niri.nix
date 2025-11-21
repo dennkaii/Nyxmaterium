@@ -72,7 +72,6 @@ in {
         }
         {command = ["swww-daemon"];}
         # {command = ["${inputs.sherlock.packages.${pkgs.system}.default}/bin/sherlock --daemonize"];}
-        {command = ["gauntlet" "--minimized"];}
         {command = [xwaylandSatellite xwaylandSatelliteDisplay];}
         {command = ["fcitx5"];}
         # {command = ["walker" "--gapplication-service"];}
@@ -177,7 +176,7 @@ in {
       in {
         "${mod}+Return".action = spawn "${inputs.ghostty.packages.${pkgs.system}.default}/bin/ghostty";
         # "${mod}+Space".action = spawn "${pkgs.rofi-wayland-unwrapped}/bin/rofi" "-show" "drun";
-        "${mod}+Space".action = spawn "gauntlet" "open";
+        "${mod}+Space".action = spawn "sherlock";
         # "${mod}+Space".action = spawn "${inputs.sherlock.packages.${pkgs.system}.default}/bin/sherlock";
 
         "${mod}+S".action = sh ''${screenarea}'';

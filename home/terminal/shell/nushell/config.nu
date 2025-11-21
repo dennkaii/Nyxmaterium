@@ -138,59 +138,33 @@ let light_theme = {
     shape_raw_string: light_purple
 }
 
-let fzf_carapace_completer = { |spans|
-    let last_arg = ($spans | last)
-    
-    if $last_arg == "**" {
-        let selected_file = (do { fzf } | str trim)
-        
-        if $selected_file != "" {
-            [$selected_file]
-        } else {
-            []
-        }
-    } else {
-        carapace $spans.0 nushell ...$spans | from json
-    }
+let carapace_completer = {|spans|
+    carapace $spans.0 nushell ...$spans | from json
 }
 
 let fish_completer = {|spans|
-    fish --command $'complete "--do-complete=($spans | str join " ")"'
+    fish --command $"complete '--do-complete=($spans | str replace --all "'" "\\'" | str join ' ')'"
     | from tsv --flexible --noheaders --no-infer
     | rename value description
-    | update value {
-        if ($in | path exists) {$'"($in | str replace "\"" "\\\"" )"'} else {$in}
+    | update value {|row|
+      let value = $row.value
+      let need_quote = ['\' ',' '[' ']' '(' ')' ' ' '\t' "'" '"' "`"] | any {$in in $value}
+      if ($need_quote and ($value | path exists)) {
+        let expanded_path = if ($value starts-with ~) {$value | path expand --no-symlink} else {$value}
+        $'"($expanded_path | str replace --all "\"" "\\\"")"'
+      } else {$value}
     }
 }
 
-let zoxide_completer = {|spans|
-    $spans | skip 1 | zoxide query -l ...$in | lines | where {|x| $x != $env.PWD}
-}
-
-let external_completer = {|spans|
-    let expanded_alias = scope aliases
-    | where name == $spans.0
-    | get -i 0.expansion
-
-    let spans = if $expanded_alias != null {
-        $spans
-        | skip 1
-        | prepend ($expanded_alias | split row ' ' | take 1)
-    } else {
-        $spans
-    }
-
+let multiple_completers = {|spans|
     match $spans.0 {
-        # carapace completions are incorrect for nu
-        nu => $fish_completer
-        # fish completes commits and branch names in a nicer way
+        ls => $fish_completer
         git => $fish_completer
-        # use zoxide completions for zoxide commands
-        _zoxide_z => $zoxide_completer
-    __zoxide_zi => $zoxide_completer
-        _ => $fzf_carapace_completer
+        _ => $carapace_completer
     } | do $in $spans
 }
+
+
 
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
@@ -261,7 +235,7 @@ $env.config = {
     external: (if ((which carapace | length) > 0) {
       {
         enable: true
-        completer: $external_completer
+        completer: $multiple_completers 
         max_results: 100
       }
     } else {
@@ -939,5 +913,8 @@ $env.config = {
         }
     ]
 }
+mkdir ($nu.data-dir | path join "vendor/autoload")
+starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+source $"($nu.cache-dir)/carapace.nu"
+source ~/.zoxide.nu
 source ~/.local/share/atuin/init.nu
-source ~/.cache/carapace/init.nu

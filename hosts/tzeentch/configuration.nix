@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: let
   #Must move to a separete file inside system/nix/overlay
@@ -13,6 +14,36 @@
 in {
   #must be set for ZFS
   networking.hostId = "2bf9a036";
+
+  #this was gpted
+  systemd.services."systemd-rfkill".enable = false;
+  systemd.services."systemd-rfkill@".enable = false;
+  systemd.sockets."systemd-rfkill".enable = false;
+
+  systemd.services."systemd-rfkill".wantedBy = lib.mkForce [];
+  systemd.sockets."systemd-rfkill".wantedBy = lib.mkForce [];
+
+  #kills wifi for suspend and restores kys mediatek
+  environment.etc."systemd/system-sleep/mt7925-reload" = {
+    text = ''
+      #!/bin/sh
+      MODPROBE=/run/current-system/sw/sbin/modprobe
+      case "$1" in
+        pre)
+          echo "[mt7925-reload] Unloading Wi-Fi modules..." | systemd-cat -t mt7925-reload
+           $MODPROBE -r mt7925e mt792x_lib mt76_connac_lib mt76
+          ;;
+        post)
+          echo "[mt7925-reload] Reloading Wi-Fi modules..." | systemd-cat -t mt7925-reload
+          $MODPROBE mt7925e
+          ;;
+      esac
+    '';
+    mode = "0755";
+  };
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x14c3", ATTR{device}=="0x7925", ATTR{power/control}="on"
+  '';
 
   nixpkgs = {
     config.allowUnfree = true;
@@ -44,7 +75,10 @@ in {
 
   programs.niri.enable = true;
 
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default
+  services.blueman.enable = true;
+
+  hardware.bluetooth.enable = true;
 
   environment.systemPackages = with pkgs; [
     fuzzel
@@ -56,10 +90,25 @@ in {
     netflix
     vesktop
     dwarfs
+    orca-slicer
+    bambu-studio
     fuse3
     fuse-overlayfs
     bubblewrap
     wine-staging
+    gnome-software
+    (stable.rstudioWrapper.override {
+      packages = with stable.rPackages; [
+        xts
+        Rcpp
+        rmarkdown
+        tidyverse
+        lubridate
+        skimr
+        htmltools
+        markdown
+      ];
+    })
     # stable.davinci-resolve
   ];
 

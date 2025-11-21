@@ -9,7 +9,7 @@ in {
   options.laptop = mkOption {
     type = with types; listOf path;
     default = [];
-    description = ''         
+    description = ''       
       Paths that will be added to laptop'';
   };
   config = {
@@ -28,6 +28,8 @@ in {
       ./programs/home-manager.nix
       ./programs/games.nix
       ./services/sql.nix
+      ./services/podman.nix
+      ./services/virtual-machines.nix
     ];
   };
 }

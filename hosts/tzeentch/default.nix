@@ -12,6 +12,12 @@
 
   networking.hostName = "tzeentch";
 
+  services.logind = {
+    lidSwitch = "hibernate";
+    lidSwitchExternalPower = "hibernate";
+    lidSwitchDocked = "ignore";
+  };
+
   services.asusd.enable = true;
   services.supergfxd.enable = true;
   services.auto-cpufreq = {

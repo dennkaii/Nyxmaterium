@@ -44,6 +44,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    dms.url = "github:AvengeMedia/DankMaterialShell";
     asus-dialpad-driver = {
       url = "github:asus-linux-drivers/asus-dialpad-driver";
       inputs.nixpkgs.follows = "nixpkgs";
