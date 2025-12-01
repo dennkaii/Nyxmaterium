@@ -36,6 +36,10 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     stable-nix.url = "github:NixOS/nixpkgs/nixos-25.05";
 
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     niri = {
       url = "github:Sodiboo/niri-flake";
     };

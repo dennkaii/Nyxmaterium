@@ -97,6 +97,7 @@ in {
     bubblewrap
     wine-staging
     gnome-software
+    qemu
     (stable.rstudioWrapper.override {
       packages = with stable.rPackages; [
         xts

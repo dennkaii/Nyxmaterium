@@ -11,6 +11,7 @@
   };
 
   programs.virt-manager.enable = true;
+  services.spice-vdagentd.enable = true;
 
   programs.dconf.enable = true;
 }

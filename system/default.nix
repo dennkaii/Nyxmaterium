@@ -9,7 +9,7 @@ in {
   options.laptop = mkOption {
     type = with types; listOf path;
     default = [];
-    description = ''       
+    description = ''         
       Paths that will be added to laptop'';
   };
   config = {
@@ -30,6 +30,7 @@ in {
       ./services/sql.nix
       ./services/podman.nix
       ./services/virtual-machines.nix
+      ./services/fcitx.nix
     ];
   };
 }
