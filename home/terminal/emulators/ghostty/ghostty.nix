@@ -5,12 +5,17 @@
 }: {
   programs.ghostty = {
     enable = true;
-    package = inputs.ghostty.packages.${pkgs.system}.default;
+    # package = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
     #not working
     # themes = import ./theme.nix;
     settings = {
       confirm-close-surface = false;
       window-decoration = false;
+
+      #SHell
+      command = "nu";
+      cursor-click-to-move = true;
+      working-directory = "inherit";
       # background-opacity = 0.8;
       keybind = [
         # "ctrl+t=new_tab"

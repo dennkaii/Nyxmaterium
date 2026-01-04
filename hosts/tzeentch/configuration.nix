@@ -47,7 +47,10 @@ in {
 
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [stableOverlay];
+    overlays = [
+      stableOverlay
+      inputs.matlab-nix.overlay
+    ];
   };
   nix.settings.experimental-features = [
     "nix-command"
@@ -56,6 +59,7 @@ in {
 
   nix.settings.substituters = [
     "https://nix-community.cachix.org"
+    "https://vicinae.cachix.org"
     "https://nixpkgs-python.cachix.org" # for devevn with python
     "https://devenv.cachix.org" #for devenv to work properly
   ];
@@ -64,6 +68,7 @@ in {
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
     "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
+    "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
   ];
 
   environment.sessionVariables = {
@@ -85,8 +90,10 @@ in {
     quickemu
     bitwarden-cli
     kitty
-    arduino-ide
+
+    stable.stremio
     google-chrome
+    btop
     netflix
     vesktop
     dwarfs
@@ -94,23 +101,45 @@ in {
     bambu-studio
     fuse3
     fuse-overlayfs
+    exiftool
     bubblewrap
-    wine-staging
+    readest
     gnome-software
+    vscodium
     qemu
-    (stable.rstudioWrapper.override {
-      packages = with stable.rPackages; [
-        xts
-        Rcpp
-        rmarkdown
-        tidyverse
-        lubridate
-        skimr
-        htmltools
-        markdown
-      ];
-    })
-    # stable.davinci-resolve
+    matlab
+    protonup-qt
+    protontricks
+    # (rstudioWrapper.override {
+    #   packages = with stable.rPackages; [
+    #     xts
+    #     Rcpp
+    #     rmarkdown
+    #     tidyverse
+    #     lubridate
+    #     skimr
+    #     htmltools
+    #     markdown
+    #     meltt
+    #     knitr
+    #     reshape
+    #     glmc
+    #     sjmisc
+    #     # pubh  # Este paquete estaba comentado en tu código original
+    #     ggplot2
+    #     forcats
+    #     modelr
+    #     dplyr
+    #     broom
+    #     sjPlot
+    #     olsrr
+    #     car
+    #     lme4
+    #     Matrix
+    #     sjlabelled
+    #   ];
+    # })
+    davinci-resolve
   ];
 
   programs.gnupg.agent = {

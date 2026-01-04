@@ -14,9 +14,9 @@
       # ./nyxt/default.nix
       ./blender/default.nix
       {
-        wrappers.zen = {
-          basePackage = inputs.zen-browser.packages.${pkgs.system}.default;
-        };
+        # wrappers.zen = {
+        #   basePackage = inputs.zen-browser.packages.${pkgs.system}.default;
+        # };
 
         # wrappers.jj = {
         # basePackage = inputs.jj.packages.${pkgs.system}.default;
@@ -31,7 +31,7 @@
         #   basePackage = pkgs.qutebrowser;
         # };
         wrappers.tidal-luna = {
-          basePackage = inputs.tidal-luna.packages.${pkgs.system}.default;
+          basePackage = inputs.tidal-luna.packages.${pkgs.stdenv.hostPlatform.system}.default;
         };
         # wrappers.davinci = {
         #   basePackage = pkgs.davinci-resolve;

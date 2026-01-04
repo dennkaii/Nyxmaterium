@@ -2,6 +2,7 @@
   imports = [
     ./niri.nix
     ./dms.nix
+    ./vicinae.nix
     # ./mango/default.nix
   ];
   home.packages = with pkgs; [

@@ -8,10 +8,10 @@
     gamescope = {
       enable = true;
       # capSysNice = true;
-      # args = [
-      #   "--rt"
-      #   "--expose-wayland"
-      # ];
+      args = [
+        "--rt"
+        "--expose-wayland"
+      ];
     };
 
     steam = {

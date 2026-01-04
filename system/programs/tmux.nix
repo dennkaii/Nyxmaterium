@@ -49,7 +49,7 @@ in {
             set -g @tmux-dotbar-position top
             set -g @tmux-dotbar-left true
             set -g @tmux-dotbar-right true
-            set -g @tmux-dotbar-status-right "%H:%M | CPU: #{cpu_percentage} | #{battery_graph} "
+            set -g @tmux-dotbar-status-right "%H:%M | "
 
 
     '';

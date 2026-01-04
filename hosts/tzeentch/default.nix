@@ -12,7 +12,7 @@
 
   networking.hostName = "tzeentch";
 
-  services.logind = {
+  services.logind.settings.Login = {
     lidSwitch = "hibernate";
     lidSwitchExternalPower = "hibernate";
     lidSwitchDocked = "ignore";
@@ -26,6 +26,10 @@
       battery = {
         governor = "powersave";
         turbo = "never";
+        enable_thresholds = true;
+        start_threshold = 0;
+        stop_threshold = 80;
+        platform_profile = "quiet";
       };
       charger = {
         governor = "performance";

@@ -26,8 +26,13 @@
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
-    theme.package = pkgs.fluent-gtk-theme;
-    theme.name = "Adwaita-dark";
+    theme.package = pkgs.jasper-gtk-theme.override {
+      themeVariants = ["grey"];
+      colorVariants = ["dark"];
+      sizeVariants = ["standard"];
+      tweaks = ["black"];
+    };
+    theme.name = "Jasper-Grey-Dark-Standard";
 
     iconTheme = {
       name = "Papirus-Dark";

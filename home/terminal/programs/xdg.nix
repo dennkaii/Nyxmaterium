@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  inputs,
   ...
 }: let
   browser = ["zen"];
@@ -70,8 +71,8 @@ in {
   };
 
   home.packages = with pkgs; [
-    superfile
-    oculante
+    # inputs.superfile.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # oculante
     zathura
     celluloid
     amberol

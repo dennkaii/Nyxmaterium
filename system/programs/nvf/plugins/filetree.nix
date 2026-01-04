@@ -26,7 +26,7 @@
     };
     maps = {
       normal = {
-        "<leader>e".action = ":Neotree float %:p:h toggle reveal<CR>";
+        "<leader>e".action = ":Neotree left toggle reveal<CR>";
       };
     };
   };

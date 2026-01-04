@@ -174,14 +174,14 @@ in {
         screenarea = ''grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png'';
         screenactive = "grimblast save active - | satty --filename - ";
       in {
-        "${mod}+Return".action = spawn "${inputs.ghostty.packages.${pkgs.system}.default}/bin/ghostty";
+        "${mod}+Return".action = spawn "${inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/ghostty";
         # "${mod}+Space".action = spawn "${pkgs.rofi-wayland-unwrapped}/bin/rofi" "-show" "drun";
         "${mod}+Space".action = spawn "sherlock";
         # "${mod}+Space".action = spawn "${inputs.sherlock.packages.${pkgs.system}.default}/bin/sherlock";
 
         "${mod}+S".action = sh ''${screenarea}'';
         "${ms}+S".action = sh ''${screenactive}'';
-        "${ms}+A".action = sh "${inputs.ghostty.packages.${pkgs.system}.default}/bin/ghostty '--title=clipse' -e 'clipse'";
+        "${ms}+A".action = sh "${inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/ghostty '--title=clipse' -e 'clipse'";
         "${mod}+f".action = toggle-window-floating;
         "${mc}+t".action = switch-focus-between-floating-and-tiling;
 

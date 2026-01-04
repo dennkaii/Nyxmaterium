@@ -6,6 +6,7 @@
   fonts = with pkgs; [
     material-symbols
     font-awesome_5
+    # core-fonts
     # normal fonts
     noto-fonts-cjk-sans
     noto-fonts

@@ -13,8 +13,8 @@
     bash.enable = true;
     lua.enable = true;
     sql = {
-      enable = true;
-      lsp.enable = true;
+      enable = false;
+      lsp.enable = false;
       treesitter.enable = true;
       format.enable = true;
     };

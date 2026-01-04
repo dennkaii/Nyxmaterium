@@ -2,8 +2,12 @@
   home.packages = [pkgs.gh];
   programs.git = {
     enable = true;
-    userName = "dennkaii";
-    userEmail = "70287696+dennkaii@users.noreply.github.com";
+    settings = {
+      user = {
+        name = "dennkaii";
+        email = "70287696+dennkaii@users.noreply.github.com";
+      };
+    };
   };
 
   programs.lazygit = {

@@ -20,5 +20,5 @@
     libqalculate
   ];
 in {
-  home.packages = [inputs.quickshell.packages.${pkgs.system}.default] ++ programs;
+  home.packages = [inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default] ++ programs;
 }

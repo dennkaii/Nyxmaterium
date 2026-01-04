@@ -5,10 +5,10 @@
     viAlias = false;
     # binds.whichKey.enable = true;
 
-    autoIndent = true;
+    options.autoindent = true;
     autocomplete.nvim-cmp.enable = true;
     autopairs.nvim-autopairs.enable = true;
-    enableEditorconfig = true;
+    globals.enableEditorconfig = true;
     preventJunkFiles = true;
     comments.comment-nvim.enable = true;
     enableLuaLoader = true;
@@ -19,6 +19,6 @@
     };
     hideSearchHighlight = true;
     searchCase = "smart";
-    splitRight = true;
+    options.splitright = true;
   };
 }

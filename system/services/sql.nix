@@ -8,6 +8,6 @@
     };
   };
   environment.systemPackages = [
-    pkgs.mysql-workbench
+    # pkgs.mysql-workbench
   ];
 }
