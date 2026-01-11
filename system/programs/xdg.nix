@@ -1,9 +1,14 @@
 {pkgs, ...}: {
   xdg.portal = {
     enable = true;
-    xdgOpenUsePortal = true;
     config = {
       common = {
+        default = ["gtk"];
+        "org.freedesktop.impl.portal.ScreenCast" = ["wlr"];
+        "org.freedesktop.impl.portal.Screenshot" = ["wlr"];
+      };
+
+      mango = {
         default = ["gtk"];
         "org.freedesktop.impl.portal.ScreenCast" = ["wlr"];
         "org.freedesktop.impl.portal.Screenshot" = ["wlr"];
