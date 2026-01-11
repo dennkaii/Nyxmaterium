@@ -71,7 +71,7 @@ in {
   };
 
   home.packages = with pkgs; [
-    # inputs.superfile.packages.${pkgs.stdenv.hostPlatform.system}.default
+    (inputs.superfile.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (oldAttrs: {doCheck = false;}))
     # oculante
     zathura
     celluloid
