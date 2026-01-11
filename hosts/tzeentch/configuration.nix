@@ -98,7 +98,9 @@ in {
     vesktop
     dwarfs
     orca-slicer
+    nemo-with-extensions
     bambu-studio
+    nautilus
     fuse3
     fuse-overlayfs
     exiftool
@@ -110,33 +112,29 @@ in {
     matlab
     protonup-qt
     protontricks
-    # (rstudioWrapper.override {
+    # (stable.rstudioWrapper.override {
     #   packages = with stable.rPackages; [
-    #     xts
-    #     Rcpp
-    #     rmarkdown
-    #     tidyverse
-    #     lubridate
-    #     skimr
-    #     htmltools
-    #     markdown
-    #     meltt
-    #     knitr
-    #     reshape
-    #     glmc
-    #     sjmisc
-    #     # pubh  # Este paquete estaba comentado en tu código original
-    #     ggplot2
-    #     forcats
-    #     modelr
-    #     dplyr
-    #     broom
-    #     sjPlot
-    #     olsrr
-    #     car
-    #     lme4
-    #     Matrix
-    #     sjlabelled
+    #     # xts
+    #     # Rcpp
+    #     # rmarkdown
+    #     # tidyverse
+    #     # skimr
+    #     # htmltools
+    #     # markdown
+    #     # knitr
+    #     # reshape
+    #     # glmc
+    #     # sjmisc
+    #     # # pubh  # Este paquete estaba comentado en tu código original
+    #     # ggplot2
+    #     # forcats
+    #     # modelr
+    #     # broom
+    #     # sjPlot
+    #     # olsrr
+    #     # car
+    #     # lme4
+    #     # Matrix
     #   ];
     # })
     davinci-resolve
