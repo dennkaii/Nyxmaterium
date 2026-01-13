@@ -2,6 +2,8 @@
   imports = [
     ./dashboard.nix
     ./lsp.nix
+    ./neorg.nix
+    ./keybinds.nix
     ./tiny-inline.nix
     ./neocord.nix
     ./dadbod.nix #databases within nvim

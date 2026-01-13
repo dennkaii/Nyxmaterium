@@ -55,7 +55,7 @@ in {
       };
     };
 
-    lazy.plugins.telescope = {
+ lazy.plugins.telescope = {
       after = ''
         local telescope = require("telescope")
       '';

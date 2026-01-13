@@ -6,7 +6,10 @@
     # binds.whichKey.enable = true;
 
     options.autoindent = true;
-    autocomplete.nvim-cmp.enable = true;
+    autocomplete.blink-cmp = {
+      enable = true;
+      setupOpts.signature.enabled = true;
+    };
     autopairs.nvim-autopairs.enable = true;
     globals.enableEditorconfig = true;
     preventJunkFiles = true;

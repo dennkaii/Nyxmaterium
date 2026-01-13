@@ -15,3 +15,5 @@
     };
   };
 }
+# ALWAYS remember <c-\><c-\n> to get into escpae mode inside a terminal :)
+
