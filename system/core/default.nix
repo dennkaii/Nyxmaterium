@@ -23,7 +23,7 @@ in {
 
   documentation.dev.enable = true;
 
-  time.timeZone = "America/New_York";
+  time.timeZone = "America/Santo_Domingo";
 
   system.stateVersion = mkDefault "24.11";
 }
