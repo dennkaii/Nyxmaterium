@@ -12,6 +12,12 @@
     markdown.enable = true;
     bash.enable = true;
     lua.enable = true;
+    go = {
+      enable = true;
+      dap.enable = true;
+      lsp.enable = true;
+      treesitter.enable = true;
+    };
     sql = {
       enable = false;
       lsp.enable = false;
