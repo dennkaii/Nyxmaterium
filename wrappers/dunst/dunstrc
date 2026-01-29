@@ -2,34 +2,44 @@
    
     ### Display ###
 
-    # Display notifications on monitor with mouse focus
-    follow = mouse
-    # Set {width}x{height} and {x_pos}+{y_pos}
-   # width =  500
-   width = (0,500) 
-   height = (0,500)
-    #height = 500
-    origin = top-center
-    # Show number of hidden notifications
-    indicate_hidden = yes
-    # Shrink window if smaller than width
-    shrink = no
-    # Set transparency of notifications
-    transparency = 0
-    # Height of seperators
-    separator_height = 2
-    # Text and seperator padding
-    padding = 8
-    # Horizontal padding
-    horizontal_padding = 8
-    # Width of frame around window
-    frame_width = 1
-    # Color of frame around window
-    frame_color = "#4287f5"
-    # Sort messages by urgency
-    sort = yes
-    # Idle seconds
-    idle_threshold = 0
+# Display notifications on monitor with mouse focus
+follow = mouse
+
+# Width and height 
+width = (0,500) 
+height = (0,500)
+
+# position
+origin = top-center
+
+# notification limits 
+notification_limit = 6
+
+# Show number of hidden notifications
+indicate_hidden = yes
+
+# Shrink window if smaller than width
+ shrink = no
+
+# Set transparency of notifications
+transparency = 0
+
+# Height of seperators
+separator_height = 2
+        
+
+#### PADDING ####
+padding = 8
+horizontal_padding = 8
+frame_width = 1
+#Color of frame around window
+frame_color = "#4287f5"
+  
+#---- 
+# Sort messages by urgency
+sort = update 
+# Idle seconds
+idle_threshold = 0
 
     ### Text ###
     
@@ -90,29 +100,9 @@
     class = Dunst
     # Print notification on startup
    # startup_notification = false
-    # Dunst verbosity
-    verbosity = mesg
-    # Corner radius of dunst
-    corner_radius = 15
-    # Ignore dbus closeNotification message
-    ignore_dbusclose = false
 
-    ### Mouse ###
 
-    # Left click
-    mouse_left_click = close_current
-    # Middle click
-    mouse_middle_click = do_action
-    # Right click
-    mouse_right_click = do_action
-
-[shortcuts]
-
-    # Close one notification
-    close = ctrl+space
-    # Close all notifications
-    close_all = ctrl+shift+space
-
+  
 [urgency_normal]
 
     # Normal urgency notifications
@@ -126,3 +116,5 @@
     background = "#ffffff"
     foreground = "#db0101"
     timeout = 0
+
+
