@@ -33,6 +33,7 @@ in {
       ./services/fcitx.nix
       ./services/appimage.nix
       ./services/automount.nix
+      ./services/quickshell/default.nix
     ];
   };
 }
