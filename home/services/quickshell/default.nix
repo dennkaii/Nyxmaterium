@@ -6,13 +6,13 @@
   programs = with pkgs; [
     ddcutil
     brightnessctl
-    app2unit
-    cava
+    # app2unit
+    # cava
     networkmanager
     lm_sensors
     fish
-    aubio
-    pipewire
+    # aubio
+    # pipewire
     glibc
     libgcc
     grim
@@ -20,5 +20,5 @@
     libqalculate
   ];
 in {
-  home.packages = [inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default] ++ programs;
+  home.packages = [inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default]; #++ programs;
 }
