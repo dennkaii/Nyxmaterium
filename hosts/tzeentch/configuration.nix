@@ -88,18 +88,14 @@ in {
   environment.systemPackages = with pkgs; [
     fuzzel
     quickemu
-    bitwarden-cli
     kitty
 
-    stable.stremio
+    # stremio
     google-chrome
     btop
-    netflix
     vesktop
     dwarfs
-    orca-slicer
     nemo-with-extensions
-    bambu-studio
     nautilus
     fuse3
     fuse-overlayfs
@@ -109,7 +105,6 @@ in {
     gnome-software
     vscodium
     qemu
-    matlab
     protonup-qt
     protontricks
     # (stable.rstudioWrapper.override {
@@ -137,7 +132,9 @@ in {
     #     # Matrix
     #   ];
     # })
-    davinci-resolve
+
+    ## NO WORKY FML
+    # stable.davinci-resolve
   ];
 
   programs.gnupg.agent = {
