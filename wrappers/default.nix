@@ -8,7 +8,7 @@
   wrappers = inputs.wrapper-manager.lib {
     inherit pkgs;
     modules = [
-      ./dunst/default.nix
+      # ./dunst/default.nix
       ./lutris/default.nix
       ./devenv/default.nix
       # ./nyxt/default.nix
