@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./niri.nix
-    ./dms.nix
+    # ./dms.nix
     ./vicinae.nix
     # ./mango/default.nix
   ];

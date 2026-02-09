@@ -30,5 +30,11 @@
       treesitter.enable = true;
       format.enable = true;
     };
+    astro = {
+      enable = true;
+      extraDiagnostics.enable = true;
+      format.enable = true;
+      lsp.enable = true;
+    };
   };
 }

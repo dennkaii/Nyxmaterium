@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   lib,
+  config,
   ...
 }: let
   #Must move to a separete file inside system/nix/overlay
@@ -49,7 +50,6 @@ in {
     config.allowUnfree = true;
     overlays = [
       stableOverlay
-      inputs.matlab-nix.overlay
     ];
   };
   nix.settings.experimental-features = [
@@ -89,8 +89,9 @@ in {
     fuzzel
     quickemu
     kitty
+    tidal-hifi
+    inputs.self.packages.${system}.nyxt-4
 
-    # stremio
     google-chrome
     btop
     vesktop

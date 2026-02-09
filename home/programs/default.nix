@@ -4,9 +4,9 @@
     ./qt.nix
 
     ./browsers/zen.nix
-    ./browsers/nyxt.nix
+    # ./browsers/nyxt.nix
     ./wayland/default.nix
-    ./sherlock/default.nix
+    # ./sherlock/default.nix
   ];
   services.udiskie = {
     enable = true;

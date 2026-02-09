@@ -24,6 +24,8 @@ in {
   documentation.dev.enable = true;
 
   time.timeZone = "America/Santo_Domingo";
+  services.ntp.enable = true;
+  time.hardwareClockInLocalTime = true;
 
   system.stateVersion = mkDefault "24.11";
 }

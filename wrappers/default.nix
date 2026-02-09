@@ -30,9 +30,9 @@
         # wrappers.quteBrowser = {
         #   basePackage = pkgs.qutebrowser;
         # };
-        wrappers.tidal-luna = {
-          basePackage = inputs.tidal-luna.packages.${pkgs.stdenv.hostPlatform.system}.default;
-        };
+        # wrappers.tidal-luna = {
+        #   basePackage = inputs.tidal-luna.packages.${pkgs.stdenv.hostPlatform.system}.default;
+        # };
         # wrappers.davinci = {
         #   basePackage = pkgs.davinci-resolve;
         # };

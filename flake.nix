@@ -6,6 +6,7 @@
       systems = ["x86_64-linux"];
       imports = [
         ./hosts
+        ./pkgs
         ./system
       ];
       perSystem = {
@@ -47,7 +48,6 @@
       url = "github:DreamMaoMao/mango";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dms.url = "github:AvengeMedia/DankMaterialShell";
     asus-dialpad-driver = {
       url = "github:asus-linux-drivers/asus-dialpad-driver";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -84,19 +84,8 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sherlock = {
-      url = "github:Skxxtz/sherlock";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     superfile = {
       url = "github:yorukot/superfile";
-    };
-    matlab-nix = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "gitlab:doronbehar/nix-matlab";
-    };
-    nyxt = {
-      url = "github:Occhima/nix-conf";
     };
     vicinae.url = "github:vicinaehq/vicinae";
   };
