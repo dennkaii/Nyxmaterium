@@ -16,7 +16,7 @@
       command = "nu";
       cursor-click-to-move = true;
       working-directory = "inherit";
-      # background-opacity = 0.8;
+      background-opacity = 0.8;
       keybind = [
         # "ctrl+t=new_tab"
         # "ctrl+w=close_tab"
