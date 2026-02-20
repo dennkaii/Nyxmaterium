@@ -1,37 +1,45 @@
 {
   description = "A very basic flake";
 
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux"];
-      imports = [
-        ./hosts
-        ./pkgs
-        ./system
-      ];
-      perSystem = {
-        config,
-        pkgs,
-        ...
-      }: {
-        #deshells go here
-        devShells = {
-          default = pkgs.mkShell {
-            nativeBuildInputs = [
-              inputs.nixpkgs.legacyPackages.x86_64-linux.python3
-            ];
-            packages = [
-              pkgs.alejandra
-              pkgs.git
-              pkgs.nodePackages.prettier
-            ];
-            name = "dots";
-            DIRENV_LOG_FORMAT = "";
-          };
-        };
-        formatter = pkgs.alejandra;
-      };
-    };
+  # outputs = inputs:
+  #   inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+  #     systems = ["x86_64-linux"];
+  #     imports = [
+  #       ./hosts
+  #       ./pkgs
+  #       ./system
+  #     ];
+  #     perSystem = {
+  #       config,
+  #       pkgs,
+  #       ...
+  #     }: {
+  #       #deshells go here
+  #       devShells = {
+  #         default = pkgs.mkShell {
+  #           nativeBuildInputs = [
+  #             inputs.nixpkgs.legacyPackages.x86_64-linux.python3
+  #           ];
+  #           packages = [
+  #             pkgs.alejandra
+  #             pkgs.git
+  #             pkgs.nodePackages.prettier
+  #           ];
+  #           name = "dots";
+  #           DIRENV_LOG_FORMAT = "";
+  #         };
+  #       };
+  #       formatter = pkgs.alejandra;
+  #     };
+  #   };
+  #
+  outputs = {...} @ inputs: let
+    dandelion = import ./dandelion.nix inputs;
+    inherit (dandelion) importModules recursiveImport;
+  in
+    importModules [
+      (recursiveImport ./modules)
+    ];
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
