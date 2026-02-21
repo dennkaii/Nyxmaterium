@@ -90,7 +90,7 @@ in {
     quickemu
     kitty
     tidal-hifi
-    inputs.self.packages.${system}.nyxt-4
+    # inputs.self.packages.${system}.nyxt-4
 
     google-chrome
     btop
