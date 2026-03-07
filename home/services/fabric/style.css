@@ -1,7 +1,0 @@
-:vars {
-        --my-color: red;
-}
-
-#date-box {
-  background-color: var(--my-color);
-}

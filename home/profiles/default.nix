@@ -1,6 +1,0 @@
-{
-  "dennkaii@tzeentch" = [
-    ./tzeentch
-    ../.
-  ];
-}
