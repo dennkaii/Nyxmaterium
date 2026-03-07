@@ -23,7 +23,7 @@
       # enable = true;
       # enableOffloadCmd = true;
       # };
-      # sync.enable = true;
+      sync.enable = true;
     };
     modesetting.enable = true;
     powerManagement.enable = true;
