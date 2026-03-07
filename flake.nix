@@ -35,6 +35,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nyxt-rev.url = "github:nixos/nixpkgs/e4bae1bd10c9c57b2cf517953ab70060a828ee6f";
+
     stable-nix.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     aagl = {

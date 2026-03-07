@@ -604,6 +604,22 @@
         "type": "github"
       }
     },
+    "nyxt-rev": {
+      "locked": {
+        "lastModified": 1768564909,
+        "narHash": "sha256-Kell/SpJYVkHWMvnhqJz/8DqQg2b6PguxVWOuadbHCc=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "e4bae1bd10c9c57b2cf517953ab70060a828ee6f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "e4bae1bd10c9c57b2cf517953ab70060a828ee6f",
+        "type": "github"
+      }
+    },
     "quickshell": {
       "inputs": {
         "nixpkgs": [
@@ -636,6 +652,7 @@
         "niri": "niri",
         "nixpkgs": "nixpkgs_4",
         "nvf": "nvf",
+        "nyxt-rev": "nyxt-rev",
         "quickshell": "quickshell",
         "stable-nix": "stable-nix",
         "superfile": "superfile",

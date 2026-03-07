@@ -1,9 +1,14 @@
 {
   systems = ["x86_64-linux"];
 
-  perSystem = {pkgs, ...}: {
+  perSystem = {
+    pkgs,
+    inputs',
+    ...
+  }: {
     packages = {
-      nyxt-4 = pkgs.callPackage ./nyxt/package.nix {};
+      #pinned to a working nixpkgs rev in the meantime
+      nyxt-4 = inputs'.nyxt-rev.legacyPackages.callPackage ./nyxt/package.nix {};
     };
   };
 }
