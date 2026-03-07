@@ -24,6 +24,45 @@ in {
   systemd.services."systemd-rfkill".wantedBy = lib.mkForce [];
   systemd.sockets."systemd-rfkill".wantedBy = lib.mkForce [];
 
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
+  systemd.services.nvidia-suspend = {
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = lib.mkForce "${config.boot.kernelPackages.nvidiaPackages.latest}/bin/nvidia-sleep.sh suspend";
+    };
+    before = ["systemd-suspend.service"];
+    wantedBy = ["suspend.target"];
+  };
+
+  systemd.services.nvidia-hibernate = {
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = lib.mkForce "${config.boot.kernelPackages.nvidiaPackages.latest}/bin/nvidia-sleep.sh hibernate";
+    };
+    before = ["systemd-hibernate.service"];
+    wantedBy = ["hibernate.target"];
+  };
+
+  systemd.services.nvidia-resume = {
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = lib.mkForce "${config.boot.kernelPackages.nvidiaPackages.latest}/bin/nvidia-sleep.sh resume";
+    };
+    after = [
+      "systemd-suspend.service"
+      "systemd-hibernate.service"
+    ];
+    wantedBy = [
+      "suspend.target"
+      "hibernate.target"
+    ];
+  };
   #kills wifi for suspend and restores kys mediatek
   environment.etc."systemd/system-sleep/mt7925-reload" = {
     text = ''
@@ -31,20 +70,20 @@ in {
       MODPROBE=/run/current-system/sw/sbin/modprobe
       case "$1" in
         pre)
-          echo "[mt7925-reload] Unloading Wi-Fi modules..." | systemd-cat -t mt7925-reload
+          echo "[mt7925-reload] Unloading Wi-Fi modules..." | ${pkgs.systemd}/bin/systemd-cat -t mt7925-reload
            $MODPROBE -r mt7925e mt792x_lib mt76_connac_lib mt76
           ;;
         post)
-          echo "[mt7925-reload] Reloading Wi-Fi modules..." | systemd-cat -t mt7925-reload
+          echo "[mt7925-reload] Reloading Wi-Fi modules..." | ${pkgs.systemd}/bin/systemd-cat -t mt7925-reload
           $MODPROBE mt7925e
           ;;
       esac
     '';
     mode = "0755";
   };
-  services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x14c3", ATTR{device}=="0x7925", ATTR{power/control}="on"
-  '';
+  # services.udev.extraRules = ''
+  #   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x14c3", ATTR{device}=="0x7925", ATTR{power/control}="on"
+  # '';
 
   nixpkgs = {
     config.allowUnfree = true;
@@ -90,7 +129,7 @@ in {
     quickemu
     kitty
     tidal-hifi
-    # inputs.self.packages.${system}.nyxt-4
+    inputs.self.packages.${system}.nyxt-4
 
     google-chrome
     btop
@@ -108,6 +147,7 @@ in {
     qemu
     protonup-qt
     protontricks
+    onlyoffice-desktopeditors
     # (stable.rstudioWrapper.override {
     #   packages = with stable.rPackages; [
     #     # xts
@@ -137,6 +177,19 @@ in {
     ## NO WORKY FML
     # stable.davinci-resolve
   ];
+
+  # onlyoffice has trouble with symlinks: https://github.com/ONLYOFFICE/DocumentServer/issues/1859
+  system.userActivationScripts = {
+    copy-fonts-local-share = {
+      text = ''
+        rm -rf ~/.local/share/fonts
+        mkdir -p ~/.local/share/fonts
+        cp ${pkgs.corefonts}/share/fonts/truetype/* ~/.local/share/fonts/
+        chmod 544 ~/.local/share/fonts
+        chmod 444 ~/.local/share/fonts/*
+      '';
+    };
+  };
 
   programs.gnupg.agent = {
     enable = true;

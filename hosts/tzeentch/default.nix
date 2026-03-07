@@ -12,12 +12,20 @@
 
   networking.hostName = "tzeentch";
 
-  services.logind.settings.Login = {
-    lidSwitch = "hibernate";
-    lidSwitchExternalPower = "hibernate";
-    lidSwitchDocked = "ignore";
-  };
-
+  # services.logind.settings.Login = {
+  #   lidSwitch = "hibernate";
+  #   lidSwitchExternalPower = "hibernate";
+  #   lidSwitchDocked = "ignore";
+  # };
+  # services.logind.settings.Login.LidSwitch = "suspend-then-hibernate";
+  # Hibernate on power button pressed
+  # services.logind.settings.Login.PowerKey = "hibernate";
+  # services.logind.settings.Login.PowerKeyLongPress = "poweroff";
+  # systemd.sleep.extraConfig = ''
+  #   HibernateDelaySec=30m
+  #   SuspendState=mem
+  # '';
+  #
   services.asusd.enable = true;
   services.supergfxd.enable = true;
   services.auto-cpufreq = {
