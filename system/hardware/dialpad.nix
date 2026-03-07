@@ -2,10 +2,9 @@
   imports = [inputs.asus-dialpad-driver.nixosModules.default];
   services.asus-dialpad-driver = {
     enable = true;
-    layout = "proartp16";
     wayland = true;
-    waylandDisplay = "wayland-1";
-    runtimeDir = "/run/user/1000/";
+    # waylandDisplay = "wayland-1";
+    # runtimeDir = "/run/user/1000/";
     config.main = {
       enabled = false;
       slices_count = 3;

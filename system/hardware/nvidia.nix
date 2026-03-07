@@ -20,23 +20,20 @@
       amdgpuBusId = "PCI:101:0:0";
       nvidiaBusId = "PCI:100:0:0";
       # offload = {
-      #   enable = true;
-      #   enableOffloadCmd = true;
+      # enable = true;
+      # enableOffloadCmd = true;
       # };
-      sync.enable = true;
+      # sync.enable = true;
     };
     modesetting.enable = true;
     powerManagement.enable = true;
     powerManagement.finegrained = false;
-    open = true;
+    # trying nvidia s2idle to work with gpt
+    open = false;
+
     nvidiaSettings = true;
   };
   #https://discourse.nixos.org/t/black-screen-after-suspend-hibernate-with-nvidia/54341/6
-  systemd.services."systemd-suspend" = {
-    serviceConfig = {
-      Environment = ''"SYSTEMD_SLEEP_FREEZE_USER_SESSIONS=false"'';
-    };
-  };
 
   # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
   #   version = "565.77";
